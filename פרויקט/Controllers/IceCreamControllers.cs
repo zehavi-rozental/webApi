@@ -9,10 +9,10 @@ namespace IceCreams.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class IceCreamControllers : ControllerBase
+    public class IceCreamController : ControllerBase
     {
         IIIceCreams service;
-        public IceCreamControllers(IIIceCreams ser)
+        public IceCreamController(IIIceCreams ser)
         {
             this.service=ser;
         }
