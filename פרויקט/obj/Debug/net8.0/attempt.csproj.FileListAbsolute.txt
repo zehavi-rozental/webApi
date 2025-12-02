@@ -30,3 +30,37 @@ Z:\יד תשפו\רוזנטל זהבה\attempt\obj\Debug\net8.0\refint\attempt.d
 Z:\יד תשפו\רוזנטל זהבה\attempt\obj\Debug\net8.0\attempt.pdb
 Z:\יד תשפו\רוזנטל זהבה\attempt\obj\Debug\net8.0\attempt.genruntimeconfig.cache
 Z:\יד תשפו\רוזנטל זהבה\attempt\obj\Debug\net8.0\ref\attempt.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net8.0\appsettings.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net8.0\attempt.staticwebassets.runtime.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net8.0\attempt.exe
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net8.0\attempt.deps.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net8.0\attempt.runtimeconfig.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net8.0\attempt.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net8.0\attempt.pdb
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.csproj.AssemblyReference.cache
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.AssemblyInfoInputs.cache
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.AssemblyInfo.cs
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.sourcelink.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets\msbuild.attempt.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets\msbuild.build.attempt.props
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.attempt.props
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.attempt.props
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\scopedcss\bundle\attempt.styles.css
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.csproj.Up2Date
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\refint\attempt.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.pdb
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.genruntimeconfig.cache
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\ref\attempt.dll

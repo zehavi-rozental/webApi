@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "פרויקט",
+			"path": ".."
+		},
+		{
+			"name": "wwwroot",
+			"path": "../../../../../Desktop/attempt/wwwroot"
+		}
+	],
+	"settings": {}
+}
