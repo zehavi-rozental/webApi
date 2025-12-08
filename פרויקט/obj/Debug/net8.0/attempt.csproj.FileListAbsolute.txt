@@ -52,11 +52,6 @@ C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.MvcA
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.sourcelink.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets\msbuild.attempt.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets\msbuild.build.attempt.props
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.attempt.props
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.attempt.props
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\scopedcss\bundle\attempt.styles.css
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.csproj.Up2Date
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.dll
@@ -64,3 +59,10 @@ C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\refint\attem
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.pdb
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\attempt.genruntimeconfig.cache
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\ref\attempt.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net8.0\attempt.staticwebassets.endpoints.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net8.0\staticwebassets.build.endpoints.json

@@ -1,4 +1,5 @@
 using IceCreams.Services;
+using Users.Services;
 using MyMiddleware;
 using Microsoft.Extensions.Logging;
 
@@ -9,6 +10,7 @@ builder.Services.AddSwaggerGen();
 
 // Add services to the container.
 builder.Services.AddIceCreamService();
+builder.Services.AddUserService();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -20,7 +22,6 @@ builder.Logging.SetMinimumLevel(LogLevel.Debug);
 // builder.Logging.AddProvider(new FileLoggerProvider("log.txt"));
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
