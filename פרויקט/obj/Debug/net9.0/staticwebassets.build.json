@@ -1,1 +1,1722 @@
-{"Version":1,"Hash":"HMfyMs8PaZLkeT5Xw9/asryn/7cw8hE0Kpw2OeeA0aY=","Source":"MyMiddleware","BasePath":"_content/MyMiddleware","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[{"Name":"MyMiddleware\\wwwroot","Source":"MyMiddleware","ContentRoot":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\","BasePath":"_content/MyMiddleware","Pattern":"**"}],"Assets":[{"Identity":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\dbqxbx2svv-m3rgwqeb0i.gz","SourceId":"MyMiddleware","SourceType":"Discovered","ContentRoot":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\","BasePath":"_content/MyMiddleware","RelativePath":"css/site#[.{fingerprint=m3rgwqeb0i}]?.css.gz","AssetKind":"All","AssetMode":"All","AssetRole":"Alternative","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\css\\site.css","AssetTraitName":"Content-Encoding","AssetTraitValue":"gzip","Fingerprint":"pcjwdze0ai","Integrity":"+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\css\\site.css","FileLength":964,"LastWriteTime":"2025-12-06T19:48:40+00:00"},{"Identity":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\km1cibjqea-c6xi6loyyp.gz","SourceId":"MyMiddleware","SourceType":"Discovered","ContentRoot":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\","BasePath":"_content/MyMiddleware","RelativePath":"js/site#[.{fingerprint=c6xi6loyyp}]?.js.gz","AssetKind":"All","AssetMode":"All","AssetRole":"Alternative","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\site.js","AssetTraitName":"Content-Encoding","AssetTraitValue":"gzip","Fingerprint":"ruumpw2nrl","Integrity":"TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\site.js","FileLength":1134,"LastWriteTime":"2025-12-06T21:10:29+00:00"},{"Identity":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\nvwquj8kzz-91832vbst5.gz","SourceId":"MyMiddleware","SourceType":"Discovered","ContentRoot":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\","BasePath":"_content/MyMiddleware","RelativePath":"js/siteUser#[.{fingerprint=91832vbst5}]?.js.gz","AssetKind":"All","AssetMode":"All","AssetRole":"Alternative","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\siteUser.js","AssetTraitName":"Content-Encoding","AssetTraitValue":"gzip","Fingerprint":"eeqr8d0wgq","Integrity":"Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\siteUser.js","FileLength":1079,"LastWriteTime":"2025-12-08T17:29:22+00:00"},{"Identity":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\vmnfuw2ec1-dun645r6mb.gz","SourceId":"MyMiddleware","SourceType":"Discovered","ContentRoot":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\","BasePath":"_content/MyMiddleware","RelativePath":"index#[.{fingerprint=dun645r6mb}]?.html.gz","AssetKind":"All","AssetMode":"All","AssetRole":"Alternative","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\index.html","AssetTraitName":"Content-Encoding","AssetTraitValue":"gzip","Fingerprint":"oifv9gsz0m","Integrity":"sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\index.html","FileLength":566,"LastWriteTime":"2025-12-06T20:24:41+00:00"},{"Identity":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\wcpd4wdr1e-s3x1hqrtti.gz","SourceId":"MyMiddleware","SourceType":"Discovered","ContentRoot":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\","BasePath":"_content/MyMiddleware","RelativePath":"user#[.{fingerprint=s3x1hqrtti}]?.html.gz","AssetKind":"All","AssetMode":"All","AssetRole":"Alternative","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\user.html","AssetTraitName":"Content-Encoding","AssetTraitValue":"gzip","Fingerprint":"or5aysx8vs","Integrity":"tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\user.html","FileLength":564,"LastWriteTime":"2025-12-08T17:29:22+00:00"},{"Identity":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\css\\site.css","SourceId":"MyMiddleware","SourceType":"Discovered","ContentRoot":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\","BasePath":"_content/MyMiddleware","RelativePath":"css/site#[.{fingerprint}]?.css","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"m3rgwqeb0i","Integrity":"zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\css\\site.css","FileLength":3455,"LastWriteTime":"2025-11-18T19:48:14+00:00"},{"Identity":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\index.html","SourceId":"MyMiddleware","SourceType":"Discovered","ContentRoot":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\","BasePath":"_content/MyMiddleware","RelativePath":"index#[.{fingerprint}]?.html","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"dun645r6mb","Integrity":"NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\index.html","FileLength":1274,"LastWriteTime":"2025-12-06T20:22:47+00:00"},{"Identity":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\site.js","SourceId":"MyMiddleware","SourceType":"Discovered","ContentRoot":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\","BasePath":"_content/MyMiddleware","RelativePath":"js/site#[.{fingerprint}]?.js","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"c6xi6loyyp","Integrity":"dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\js\\site.js","FileLength":3836,"LastWriteTime":"2025-12-06T20:29:19+00:00"},{"Identity":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\siteUser.js","SourceId":"MyMiddleware","SourceType":"Discovered","ContentRoot":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\","BasePath":"_content/MyMiddleware","RelativePath":"js/siteUser#[.{fingerprint}]?.js","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"91832vbst5","Integrity":"k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\js\\siteUser.js","FileLength":3584,"LastWriteTime":"2025-12-08T17:28:53+00:00"},{"Identity":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\user.html","SourceId":"MyMiddleware","SourceType":"Discovered","ContentRoot":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\","BasePath":"_content/MyMiddleware","RelativePath":"user#[.{fingerprint}]?.html","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"s3x1hqrtti","Integrity":"KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot\\user.html","FileLength":1190,"LastWriteTime":"2025-12-08T17:29:10+00:00"}],"Endpoints":[{"Route":"css/site.css","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\dbqxbx2svv-m3rgwqeb0i.gz","Selectors":[{"Name":"Content-Encoding","Value":"gzip","Quality":"0.001036269430"}],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"964"},{"Name":"ETag","Value":"\"+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 19:48:40 GMT"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"W/\"zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ=\""}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ="}]},{"Route":"css/site.css","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\css\\site.css","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"3455"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\"zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ=\""},{"Name":"Last-Modified","Value":"Tue, 18 Nov 2025 19:48:14 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ="}]},{"Route":"css/site.css.gz","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\dbqxbx2svv-m3rgwqeb0i.gz","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"964"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\"+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 19:48:40 GMT"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do="}]},{"Route":"css/site.m3rgwqeb0i.css","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\dbqxbx2svv-m3rgwqeb0i.gz","Selectors":[{"Name":"Content-Encoding","Value":"gzip","Quality":"0.001036269430"}],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"964"},{"Name":"ETag","Value":"\"+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 19:48:40 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"W/\"zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ=\""}],"EndpointProperties":[{"Name":"fingerprint","Value":"m3rgwqeb0i"},{"Name":"label","Value":"css/site.css"},{"Name":"integrity","Value":"sha256-zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ="}]},{"Route":"css/site.m3rgwqeb0i.css","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\css\\site.css","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"3455"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\"zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ=\""},{"Name":"Last-Modified","Value":"Tue, 18 Nov 2025 19:48:14 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"m3rgwqeb0i"},{"Name":"label","Value":"css/site.css"},{"Name":"integrity","Value":"sha256-zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ="}]},{"Route":"css/site.m3rgwqeb0i.css.gz","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\dbqxbx2svv-m3rgwqeb0i.gz","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"964"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\"+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 19:48:40 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"}],"EndpointProperties":[{"Name":"fingerprint","Value":"m3rgwqeb0i"},{"Name":"label","Value":"css/site.css.gz"},{"Name":"integrity","Value":"sha256-+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do="}]},{"Route":"index.dun645r6mb.html","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\vmnfuw2ec1-dun645r6mb.gz","Selectors":[{"Name":"Content-Encoding","Value":"gzip","Quality":"0.001763668430"}],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"566"},{"Name":"ETag","Value":"\"sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 20:24:41 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"W/\"NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0=\""}],"EndpointProperties":[{"Name":"fingerprint","Value":"dun645r6mb"},{"Name":"label","Value":"index.html"},{"Name":"integrity","Value":"sha256-NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0="}]},{"Route":"index.dun645r6mb.html","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\index.html","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1274"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\"NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 20:22:47 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"dun645r6mb"},{"Name":"label","Value":"index.html"},{"Name":"integrity","Value":"sha256-NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0="}]},{"Route":"index.dun645r6mb.html.gz","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\vmnfuw2ec1-dun645r6mb.gz","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"566"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\"sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 20:24:41 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"}],"EndpointProperties":[{"Name":"fingerprint","Value":"dun645r6mb"},{"Name":"label","Value":"index.html.gz"},{"Name":"integrity","Value":"sha256-sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg="}]},{"Route":"index.html","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\vmnfuw2ec1-dun645r6mb.gz","Selectors":[{"Name":"Content-Encoding","Value":"gzip","Quality":"0.001763668430"}],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"566"},{"Name":"ETag","Value":"\"sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 20:24:41 GMT"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"W/\"NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0=\""}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0="}]},{"Route":"index.html","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\index.html","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1274"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\"NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 20:22:47 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0="}]},{"Route":"index.html.gz","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\vmnfuw2ec1-dun645r6mb.gz","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"566"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\"sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 20:24:41 GMT"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg="}]},{"Route":"js/site.c6xi6loyyp.js","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\km1cibjqea-c6xi6loyyp.gz","Selectors":[{"Name":"Content-Encoding","Value":"gzip","Quality":"0.000881057269"}],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1134"},{"Name":"ETag","Value":"\"TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 21:10:29 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"W/\"dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI=\""}],"EndpointProperties":[{"Name":"fingerprint","Value":"c6xi6loyyp"},{"Name":"label","Value":"js/site.js"},{"Name":"integrity","Value":"sha256-dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI="}]},{"Route":"js/site.c6xi6loyyp.js","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\site.js","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"3836"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\"dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 20:29:19 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"c6xi6loyyp"},{"Name":"label","Value":"js/site.js"},{"Name":"integrity","Value":"sha256-dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI="}]},{"Route":"js/site.c6xi6loyyp.js.gz","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\km1cibjqea-c6xi6loyyp.gz","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1134"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\"TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 21:10:29 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"}],"EndpointProperties":[{"Name":"fingerprint","Value":"c6xi6loyyp"},{"Name":"label","Value":"js/site.js.gz"},{"Name":"integrity","Value":"sha256-TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y="}]},{"Route":"js/site.js","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\km1cibjqea-c6xi6loyyp.gz","Selectors":[{"Name":"Content-Encoding","Value":"gzip","Quality":"0.000881057269"}],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1134"},{"Name":"ETag","Value":"\"TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 21:10:29 GMT"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"W/\"dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI=\""}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI="}]},{"Route":"js/site.js","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\site.js","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"3836"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\"dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 20:29:19 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI="}]},{"Route":"js/site.js.gz","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\km1cibjqea-c6xi6loyyp.gz","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1134"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\"TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y=\""},{"Name":"Last-Modified","Value":"Sat, 06 Dec 2025 21:10:29 GMT"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y="}]},{"Route":"js/siteUser.91832vbst5.js","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\nvwquj8kzz-91832vbst5.gz","Selectors":[{"Name":"Content-Encoding","Value":"gzip","Quality":"0.000925925926"}],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1079"},{"Name":"ETag","Value":"\"Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s=\""},{"Name":"Last-Modified","Value":"Mon, 08 Dec 2025 17:29:22 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"W/\"k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE=\""}],"EndpointProperties":[{"Name":"fingerprint","Value":"91832vbst5"},{"Name":"label","Value":"js/siteUser.js"},{"Name":"integrity","Value":"sha256-k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE="}]},{"Route":"js/siteUser.91832vbst5.js","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\siteUser.js","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"3584"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\"k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE=\""},{"Name":"Last-Modified","Value":"Mon, 08 Dec 2025 17:28:53 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"91832vbst5"},{"Name":"label","Value":"js/siteUser.js"},{"Name":"integrity","Value":"sha256-k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE="}]},{"Route":"js/siteUser.91832vbst5.js.gz","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\nvwquj8kzz-91832vbst5.gz","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1079"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\"Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s=\""},{"Name":"Last-Modified","Value":"Mon, 08 Dec 2025 17:29:22 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"}],"EndpointProperties":[{"Name":"fingerprint","Value":"91832vbst5"},{"Name":"label","Value":"js/siteUser.js.gz"},{"Name":"integrity","Value":"sha256-Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s="}]},{"Route":"js/siteUser.js","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\nvwquj8kzz-91832vbst5.gz","Selectors":[{"Name":"Content-Encoding","Value":"gzip","Quality":"0.000925925926"}],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1079"},{"Name":"ETag","Value":"\"Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s=\""},{"Name":"Last-Modified","Value":"Mon, 08 Dec 2025 17:29:22 GMT"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"W/\"k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE=\""}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE="}]},{"Route":"js/siteUser.js","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\siteUser.js","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"3584"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\"k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE=\""},{"Name":"Last-Modified","Value":"Mon, 08 Dec 2025 17:28:53 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE="}]},{"Route":"js/siteUser.js.gz","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\nvwquj8kzz-91832vbst5.gz","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1079"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\"Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s=\""},{"Name":"Last-Modified","Value":"Mon, 08 Dec 2025 17:29:22 GMT"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s="}]},{"Route":"user.html","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\wcpd4wdr1e-s3x1hqrtti.gz","Selectors":[{"Name":"Content-Encoding","Value":"gzip","Quality":"0.001769911504"}],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"564"},{"Name":"ETag","Value":"\"tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE=\""},{"Name":"Last-Modified","Value":"Mon, 08 Dec 2025 17:29:22 GMT"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"W/\"KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI=\""}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI="}]},{"Route":"user.html","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\user.html","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1190"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\"KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI=\""},{"Name":"Last-Modified","Value":"Mon, 08 Dec 2025 17:29:10 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI="}]},{"Route":"user.html.gz","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\wcpd4wdr1e-s3x1hqrtti.gz","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"564"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\"tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE=\""},{"Name":"Last-Modified","Value":"Mon, 08 Dec 2025 17:29:22 GMT"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE="}]},{"Route":"user.s3x1hqrtti.html","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\wcpd4wdr1e-s3x1hqrtti.gz","Selectors":[{"Name":"Content-Encoding","Value":"gzip","Quality":"0.001769911504"}],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"564"},{"Name":"ETag","Value":"\"tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE=\""},{"Name":"Last-Modified","Value":"Mon, 08 Dec 2025 17:29:22 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"W/\"KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI=\""}],"EndpointProperties":[{"Name":"fingerprint","Value":"s3x1hqrtti"},{"Name":"label","Value":"user.html"},{"Name":"integrity","Value":"sha256-KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI="}]},{"Route":"user.s3x1hqrtti.html","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\user.html","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1190"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\"KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI=\""},{"Name":"Last-Modified","Value":"Mon, 08 Dec 2025 17:29:10 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"s3x1hqrtti"},{"Name":"label","Value":"user.html"},{"Name":"integrity","Value":"sha256-KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI="}]},{"Route":"user.s3x1hqrtti.html.gz","AssetFile":"C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\wcpd4wdr1e-s3x1hqrtti.gz","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"564"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\"tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE=\""},{"Name":"Last-Modified","Value":"Mon, 08 Dec 2025 17:29:22 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"}],"EndpointProperties":[{"Name":"fingerprint","Value":"s3x1hqrtti"},{"Name":"label","Value":"user.html.gz"},{"Name":"integrity","Value":"sha256-tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE="}]}]}
+{
+  "Version": 1,
+  "Hash": "4vWyIyCWPUSFdUJBgWPN8B+lN58VwUBi6SS45kJB85g=",
+  "Source": "MyMiddleware",
+  "BasePath": "_content/MyMiddleware",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "MyMiddleware\\wwwroot",
+      "Source": "MyMiddleware",
+      "ContentRoot": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\",
+      "BasePath": "_content/MyMiddleware",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\dbqxbx2svv-m3rgwqeb0i.gz",
+      "SourceId": "MyMiddleware",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/MyMiddleware",
+      "RelativePath": "css/site#[.{fingerprint=m3rgwqeb0i}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\css\\site.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "pcjwdze0ai",
+      "Integrity": "+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\km1cibjqea-c6xi6loyyp.gz",
+      "SourceId": "MyMiddleware",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/MyMiddleware",
+      "RelativePath": "js/site#[.{fingerprint=c6xi6loyyp}]?.js.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\site.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "ruumpw2nrl",
+      "Integrity": "TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\nvwquj8kzz-91832vbst5.gz",
+      "SourceId": "MyMiddleware",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/MyMiddleware",
+      "RelativePath": "js/siteUser#[.{fingerprint=91832vbst5}]?.js.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\siteUser.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "eeqr8d0wgq",
+      "Integrity": "Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\siteUser.js"
+    },
+    {
+      "Identity": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\vmnfuw2ec1-dun645r6mb.gz",
+      "SourceId": "MyMiddleware",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/MyMiddleware",
+      "RelativePath": "index#[.{fingerprint=dun645r6mb}]?.html.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\index.html",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "oifv9gsz0m",
+      "Integrity": "sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\wcpd4wdr1e-s3x1hqrtti.gz",
+      "SourceId": "MyMiddleware",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/MyMiddleware",
+      "RelativePath": "user#[.{fingerprint=s3x1hqrtti}]?.html.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\user.html",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "or5aysx8vs",
+      "Integrity": "tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\user.html"
+    },
+    {
+      "Identity": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\css\\site.css",
+      "SourceId": "MyMiddleware",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\",
+      "BasePath": "_content/MyMiddleware",
+      "RelativePath": "css/site#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "m3rgwqeb0i",
+      "Integrity": "zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\index.html",
+      "SourceId": "MyMiddleware",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\",
+      "BasePath": "_content/MyMiddleware",
+      "RelativePath": "index#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dun645r6mb",
+      "Integrity": "NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\site.js",
+      "SourceId": "MyMiddleware",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\",
+      "BasePath": "_content/MyMiddleware",
+      "RelativePath": "js/site#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "c6xi6loyyp",
+      "Integrity": "dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\siteUser.js",
+      "SourceId": "MyMiddleware",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\",
+      "BasePath": "_content/MyMiddleware",
+      "RelativePath": "js/siteUser#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "91832vbst5",
+      "Integrity": "k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\siteUser.js"
+    },
+    {
+      "Identity": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\user.html",
+      "SourceId": "MyMiddleware",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\",
+      "BasePath": "_content/MyMiddleware",
+      "RelativePath": "user#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "s3x1hqrtti",
+      "Integrity": "KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\user.html"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "css/site.css",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\dbqxbx2svv-m3rgwqeb0i.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001036269430"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "964"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3455"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css.gz",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\dbqxbx2svv-m3rgwqeb0i.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "964"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.m3rgwqeb0i.css",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\dbqxbx2svv-m3rgwqeb0i.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001036269430"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "964"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "m3rgwqeb0i"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.m3rgwqeb0i.css",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3455"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "m3rgwqeb0i"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zqrT5B+T27KYwQaMgV0Tsu06lSSV1F/6UyFHBhYfHdQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.m3rgwqeb0i.css.gz",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\dbqxbx2svv-m3rgwqeb0i.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "964"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "m3rgwqeb0i"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+aL9f+cKlzE+6Y2uIe5xBl/iStUmEPaqVuST1yAE9Do="
+        }
+      ]
+    },
+    {
+      "Route": "index.dun645r6mb.html",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\vmnfuw2ec1-dun645r6mb.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001763668430"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "566"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dun645r6mb"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0="
+        }
+      ]
+    },
+    {
+      "Route": "index.dun645r6mb.html",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1274"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dun645r6mb"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0="
+        }
+      ]
+    },
+    {
+      "Route": "index.dun645r6mb.html.gz",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\vmnfuw2ec1-dun645r6mb.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "566"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dun645r6mb"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\vmnfuw2ec1-dun645r6mb.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001763668430"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "566"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1274"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-NaYOX5VRVgxQ50R00ME9m6UCXBgW0EAeCwcHIYf4L/0="
+        }
+      ]
+    },
+    {
+      "Route": "index.html.gz",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\vmnfuw2ec1-dun645r6mb.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "566"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sDb4yULsN8TsE1/oyh+UPwuklEpGnBYr1XcZctT/QKg="
+        }
+      ]
+    },
+    {
+      "Route": "js/site.c6xi6loyyp.js",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\km1cibjqea-c6xi6loyyp.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000881057269"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1134"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c6xi6loyyp"
+        },
+        {
+          "Name": "label",
+          "Value": "js/site.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI="
+        }
+      ]
+    },
+    {
+      "Route": "js/site.c6xi6loyyp.js",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3836"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c6xi6loyyp"
+        },
+        {
+          "Name": "label",
+          "Value": "js/site.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI="
+        }
+      ]
+    },
+    {
+      "Route": "js/site.c6xi6loyyp.js.gz",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\km1cibjqea-c6xi6loyyp.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1134"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c6xi6loyyp"
+        },
+        {
+          "Name": "label",
+          "Value": "js/site.js.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y="
+        }
+      ]
+    },
+    {
+      "Route": "js/site.js",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\km1cibjqea-c6xi6loyyp.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000881057269"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1134"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI="
+        }
+      ]
+    },
+    {
+      "Route": "js/site.js",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3836"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dLIqANB5iIUpiZuKzrVkUUZ7gfO6zxuD/Let1S2YYBI="
+        }
+      ]
+    },
+    {
+      "Route": "js/site.js.gz",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\km1cibjqea-c6xi6loyyp.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1134"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-TaG1d2ytQ+3nmVgxI9+UwAYBQTAxq5t63y6MgX0q25Y="
+        }
+      ]
+    },
+    {
+      "Route": "js/siteUser.91832vbst5.js",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\nvwquj8kzz-91832vbst5.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000925925926"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1079"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "91832vbst5"
+        },
+        {
+          "Name": "label",
+          "Value": "js/siteUser.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE="
+        }
+      ]
+    },
+    {
+      "Route": "js/siteUser.91832vbst5.js",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\siteUser.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3584"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "91832vbst5"
+        },
+        {
+          "Name": "label",
+          "Value": "js/siteUser.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE="
+        }
+      ]
+    },
+    {
+      "Route": "js/siteUser.91832vbst5.js.gz",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\nvwquj8kzz-91832vbst5.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1079"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "91832vbst5"
+        },
+        {
+          "Name": "label",
+          "Value": "js/siteUser.js.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s="
+        }
+      ]
+    },
+    {
+      "Route": "js/siteUser.js",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\nvwquj8kzz-91832vbst5.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000925925926"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1079"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE="
+        }
+      ]
+    },
+    {
+      "Route": "js/siteUser.js",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\js\\siteUser.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3584"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-k+aaWDE1hB27xhvCnZknDMwt0IUfOyCoU9jcx4+wVJE="
+        }
+      ]
+    },
+    {
+      "Route": "js/siteUser.js.gz",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\nvwquj8kzz-91832vbst5.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1079"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Zhob8fk0QbwJgVXyTaSALvwfNWK+1T+DJ3eS6mazQ/s="
+        }
+      ]
+    },
+    {
+      "Route": "user.html",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\wcpd4wdr1e-s3x1hqrtti.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001769911504"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "564"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI="
+        }
+      ]
+    },
+    {
+      "Route": "user.html",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\user.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1190"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI="
+        }
+      ]
+    },
+    {
+      "Route": "user.html.gz",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\wcpd4wdr1e-s3x1hqrtti.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "564"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE="
+        }
+      ]
+    },
+    {
+      "Route": "user.s3x1hqrtti.html",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\wcpd4wdr1e-s3x1hqrtti.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001769911504"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "564"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s3x1hqrtti"
+        },
+        {
+          "Name": "label",
+          "Value": "user.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI="
+        }
+      ]
+    },
+    {
+      "Route": "user.s3x1hqrtti.html",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\wwwroot\\user.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1190"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s3x1hqrtti"
+        },
+        {
+          "Name": "label",
+          "Value": "user.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KFlNcvGEzw2D/Hg41zyHBeOf6YjwFCn8ArguFQ5T+uI="
+        }
+      ]
+    },
+    {
+      "Route": "user.s3x1hqrtti.html.gz",
+      "AssetFile": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\Debug\\net9.0\\compressed\\wcpd4wdr1e-s3x1hqrtti.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "564"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 09 Dec 2025 15:22:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s3x1hqrtti"
+        },
+        {
+          "Name": "label",
+          "Value": "user.html.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tJ3qCpDlpVYxPUrObR0odq0Z4r7p1b7fqqFT3eY87sE="
+        }
+      ]
+    }
+  ]
+}
