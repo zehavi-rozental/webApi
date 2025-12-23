@@ -1,6 +1,7 @@
 using IceCreams.Models;
 using ServiceIceCream.interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text.Json;
 namespace IceCreams.Services;
 
     public class IceCreamService : IIIceCreams
@@ -8,15 +9,32 @@ namespace IceCreams.Services;
         
     private  List<IceCream> IceCreams;
     private  int nextId = 3;
-
-    public IceCreamService()
-    {
-        IceCreams = new List<IceCream>
+    private string filePath;
+    
+ 
+        public IceCreamService()
         {
-            new IceCream { Id = 1, Name = "Mocha", Milki = false },
-            new IceCream { Id = 2, Name = "Vanilla", Milki = true }
-        };
-    }
+            IceCreams = new List<IceCream>()
+              { new IceCream { Id = 1, Name = "Mocha", Milki = false },
+               new IceCream { Id = 2, Name = "Vanilla", Milki = true }};
+            //this.webHost = webHost;
+            this.filePath = Path.Combine("Data", "IceCream.json");
+            using (var jsonFile = File.OpenText(filePath))
+            {
+                var content = jsonFile.ReadToEnd();
+                IceCreams = JsonSerializer.Deserialize<List<IceCream>>(content,
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+            }
+        }
+        private void saveToFile()
+        {
+            var text = JsonSerializer.Serialize(IceCreams);
+            File.WriteAllText(filePath, text);
+        }
+
 
     public  List<IceCream> GetAll() => IceCreams;
 
@@ -26,6 +44,7 @@ namespace IceCreams.Services;
     {
         iceCream.Id = nextId++;
         IceCreams.Add(iceCream);
+        saveToFile();
     }
 
     public  void Delete(int id)
@@ -34,6 +53,7 @@ namespace IceCreams.Services;
         if (iceCream is null)
             return;
         IceCreams.Remove(iceCream);
+        saveToFile();
     }
 
     public  void Update(IceCream iceCream)
@@ -43,6 +63,7 @@ namespace IceCreams.Services;
             return;
 
         IceCreams[index] = iceCream;
+        saveToFile();
     }
 
     }

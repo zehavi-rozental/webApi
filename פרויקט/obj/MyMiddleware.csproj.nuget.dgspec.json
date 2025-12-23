@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\MyMiddleware.csproj": {}
+    "Z:\\יד תשפו\\רוזנטל זהבה\\זילברברג\\project\\webApi\\פרויקט\\MyMiddleware.csproj": {}
   },
   "projects": {
-    "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\MyMiddleware.csproj": {
+    "Z:\\יד תשפו\\רוזנטל זהבה\\זילברברג\\project\\webApi\\פרויקט\\MyMiddleware.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\MyMiddleware.csproj",
+        "projectUniqueName": "Z:\\יד תשפו\\רוזנטל זהבה\\זילברברג\\project\\webApi\\פרויקט\\MyMiddleware.csproj",
         "projectName": "MyMiddleware",
-        "projectPath": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\MyMiddleware.csproj",
+        "projectPath": "Z:\\יד תשפו\\רוזנטל זהבה\\זילברברג\\project\\webApi\\פרויקט\\MyMiddleware.csproj",
         "packagesPath": "C:\\Users\\huser\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\huser\\Documents\\GitHub\\webApi\\פרויקט\\obj\\",
+        "outputPath": "Z:\\יד תשפו\\רוזנטל זהבה\\זילברברג\\project\\webApi\\פרויקט\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
