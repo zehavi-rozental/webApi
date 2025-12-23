@@ -8,40 +8,144 @@
 </head>
 
 <body>
-    <h3 onclick="location.href='user.html'">Users</h3>
-    <h1>Ice cream🍦</h1>
-    <h3>Add</h3>
-    <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
-        <input type="text" id="add-name" placeholder="New ice cream">
-        <input type="submit" value="Add">
-    </form>
+    <header style="max-width:820px;margin:0 auto 1rem;display:flex;justify-content:space-between;align-items:center;">
+        <div id="greeting" style="color:#7a5863;font-weight:500;"></div>
+        <div><!-- no login/logout buttons per request --></div>
+    </header>
 
-    <div id="editForm">
-        <h3>Edit</h3>
-        <form action="javascript:void(0);" onsubmit="updateItem()">
-            <input type="hidden" id="edit-id">
-            <input type="checkbox" id="edit-milki">
-            <input type="text" id="edit-name">
-            <input type="submit" value="Save">
-            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+    <div id="inlineLogin" class="login-card" style="max-width:520px;margin:1rem auto;display:none;">
+        <form id="inlineLoginForm" action="javascript:void(0);" onsubmit="handleInlineLogin(event)">
+            <input id="inline-username" type="text" placeholder="שם משתמש" required />
+            <input id="inline-password" type="password" placeholder="סיסמה" required />
+            <input class="login-submit" type="submit" value="התחבר" />
+            <p id="inline-error" style="color:#b91c1c;margin-top:0.5rem;display:none"></p>
         </form>
     </div>
 
-    <p id="counter"></p>
+    <div id="protectedContent" style="display:none;">
+        <h3 onclick="location.href='user.html'">Users</h3>
+        <h1>Ice cream🍦</h1>
+        <h3>Add</h3>
+        <form id="addForm" action="javascript:void(0);" method="POST" onsubmit="addItem()">
+            <input type="text" id="add-name" placeholder="New ice cream">
+            <input type="submit" value="Add">
+        </form>
 
-    <table>
-        <tr>
-            <th>Is milki?</th>
-            <th>Name</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tbody id="iceCreams"></tbody>
-    </table>
+        <div id="editForm">
+            <h3>Edit</h3>
+            <form action="javascript:void(0);" onsubmit="updateItem()">
+                <input type="hidden" id="edit-id">
+                <input type="checkbox" id="edit-milki">
+                <input type="text" id="edit-name">
+                <input type="submit" value="Save">
+                <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+            </form>
+        </div>
+
+        <p id="counter"></p>
+
+        <table>
+            <tr>
+                <th>Is milki?</th>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tbody id="iceCreams"></tbody>
+        </table>
+    </div>
+
+    <script>
+     
+        function getToken() { return localStorage.getItem('token'); }
+        function setToken(token) {  localStorage.setItem('token', token); }
+        function removeToken() { localStorage.removeItem('token'); }
+        function getPayloadFromToken() {
+            const token = getToken();
+            if (!token) return null;
+            const parts = token.split('.');
+            if (parts.length < 2) return null;
+            try {
+                const base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+                const json = atob(base64);
+                return JSON.parse(json);
+            } catch (e) {
+                return null;
+            }
+        }
+        function getUserName() {
+            const p = getPayloadFromToken();
+            if (!p) return null;
+            return p.name || p.unique_name || p.username || p.sub || null;
+        }
+
+        // DOM-ready initialization: show inline login when not authenticated, show protected content when authenticated
+        document.addEventListener('DOMContentLoaded', () => {
+            const greetingEl = document.getElementById('greeting');
+            const protectedEl = document.getElementById('protectedContent');
+            const inlineLogin = document.getElementById('inlineLogin');
+
+            function showProtected() {
+                if (inlineLogin) inlineLogin.style.display = 'none';
+                if (protectedEl) protectedEl.style.display = 'block';
+                const currentName = getUserName();
+    
+                if (getToken()) {
+                    // fetch items after showing protected area
+                    getItems();
+                }
+            }
+
+            function showLogin() {
+                if (inlineLogin) inlineLogin.style.display = 'block';
+                if (protectedEl) protectedEl.style.display = 'none';
+                greetingEl.innerText = '';
+            }
+
+            if (getToken()) {
+                showProtected();
+            } else {
+                showLogin();
+            }
+
+            // expose login/showLogin for other scripts (used when token expires)
+            window.showInlineLogin = showLogin;
+
+            // attach login handler (inline form)
+            window.handleInlineLogin = async function (e) {
+                e.preventDefault();
+                const user = document.getElementById('inline-username').value.trim();
+                const pass = document.getElementById('inline-password').value.trim();
+                const err = document.getElementById('inline-error');
+                if (err) err.style.display = 'none';
+                try {
+                    const res = await fetch('/User/Login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ Username: user, Password: pass })
+                    });
+                    if (res.ok) {
+                        const token = await res.text();
+                        setToken(token); // שמירת הטוקן ב-localStorage
+                        showProtected();
+                    } else if (res.status === 401) {
+                        if (err) { err.innerText = 'שם משתמש או סיסמה שגויים.'; err.style.display = 'block'; }
+                    } else {
+                        if (err) { err.innerText = 'שגיאה, נסו שוב.'; err.style.display = 'block'; }
+                    }
+                } catch (e) {
+                    if (err) { err.innerText = 'שגיאת רשת.'; err.style.display = 'block'; }
+                }
+            };
+        });
+    </script>
 
     <script src="js/site.js" asp-append-version="true"></script>
     <script type="text/javascript">
-        getItems();
+        // Only fetch items if there's a token. If not, the inline login will appear.
+        if (getToken()) {
+            getItems();
+        }
     </script>
 </body>
 

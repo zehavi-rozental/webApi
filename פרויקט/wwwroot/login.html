@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>כניסה - חנות הגלידות</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+
+<body>
+    <main>
+        <section class="login-hero" role="banner">
+            <h1>חנות הגלידות — כניסה</h1>
+            <p>ברוכים הבאים! התחברו כדי לנהל את אוסף הגלידות והמשתמשים.</p>
+        </section>
+
+        <section class="login-card" dir="rtl">
+            <form id="loginForm" action="javascript:void(0);" onsubmit="loginUser(event)">
+                <input id="username" type="text" placeholder="שם משתמש" aria-label="שם משתמש" required />
+                <input id="password" type="password" placeholder="סיסמה" aria-label="סיסמה" required />
+                <input class="login-submit" type="submit" value="התחבר" />
+                <p id="error" style="color:#b91c1c;margin-top:0.5rem;display:none"></p>
+            </form>
+
+            <p class="login-note">אם אין לכם משתמש — פנו למנהל. לאחר התחברות תקבלו גישה לאוסף הגלידות.</p>
+        </section>
+    </main>
+
+    <script>
+        if (localStorage.getItem('token')) {
+            location.href = 'index.html';
+        }
+
+        async function loginUser(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorEl = document.getElementById('error');
+            errorEl.style.display = 'none';
+            try {
+                const res = await fetch('/User/Login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ Username: username, Password: password })
+                });
+
+                if (res.ok) {
+                    const token = await res.text();
+                    localStorage.setItem('token', token);
+                    location.href = 'index.html';
+                } else if (res.status === 401) {
+                    errorEl.innerText = 'שם משתמש או סיסמה שגויים.';
+                    errorEl.style.display = 'block';
+                } else {
+                    errorEl.innerText = 'אירעה שגיאה, נסו שוב.';
+                    errorEl.style.display = 'block';
+                }
+            } catch (err) {
+                errorEl.innerText = 'שגיאת רשת או בעיה בשרת.';
+                errorEl.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

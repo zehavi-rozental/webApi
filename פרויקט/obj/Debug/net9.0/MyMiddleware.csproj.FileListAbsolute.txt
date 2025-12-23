@@ -25,8 +25,6 @@ C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\rjimswa.dswa
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\scopedcss\bundle\MyMiddleware.styles.css
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\dbqxbx2svv-m3rgwqeb0i.gz
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\km1cibjqea-c6xi6loyyp.gz
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.development.json
@@ -37,9 +35,6 @@ C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\refint\MyMid
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.pdb
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.genruntimeconfig.cache
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\ref\MyMiddleware.dll
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\vmnfuw2ec1-dun645r6mb.gz
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\nvwquj8kzz-91832vbst5.gz
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\wcpd4wdr1e-s3x1hqrtti.gz
 C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\appsettings.json
 C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.staticwebassets.runtime.json
@@ -128,3 +123,20 @@ Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרוי�
 Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.pdb
 Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.genruntimeconfig.cache
 Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\ref\MyMiddleware.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Data\IceCream.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Data\Users.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\dbqxbx2svv-2i51u8uma7.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\vmnfuw2ec1-46pdkd5tb2.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\37478ikspa-t8znybtnx7.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\km1cibjqea-9fck7h8jug.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\nvwquj8kzz-h11080p68p.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\0skg9rf76a-re2pf0t79o.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\wcpd4wdr1e-snbpqx8w9t.gz

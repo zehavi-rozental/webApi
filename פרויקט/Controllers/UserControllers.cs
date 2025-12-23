@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Users.Models;
 using Users.Services;
 using ServiceUsers.interfaces;
+using Token.Services;
 
 namespace Users.Controllers
 {
@@ -11,45 +14,38 @@ namespace Users.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
+        IIUsers service;
 
-        public AdminController() { }
+        public UserController(IIUsers ser)
+        {
+            this.service = ser;
+        }
 
         [HttpPost]
         [Route("[action]")]
-        public ActionResult<String> Login([FromBody] User User)
+        public ActionResult<string> Login([FromBody] LoginRequest request)
         {
             var dt = DateTime.Now;
-            //var query = $"select * from users where idnumber = @idnumber";
-            if (User.Username != "David"
-            || User.Password != $"W{dt.Year}#{dt.Day}!")
+
+             if (request.Username != "lali" || request.Password != "123")
             {
                 return Unauthorized();
-            }
+            }   
 
             var claims = new List<Claim>
             {
-                new Claim("username", User.Username),
+                new Claim(ClaimTypes.Name, request.Username),
                 new Claim("type", "Admin"),
             };
 
-            var token = FbiTokenService.GetToken(claims);
-
-            return new OkObjectResult(FbiTokenService.WriteToken(token));
-        }
-        //--------------
-         
-        IIUsers service;
-        public UserController(IIUsers ser)
-        {
-            this.service=ser;
+            var token = TokenService.GetToken(claims);
+            return Ok(TokenService.WriteToken(token));
         }
 
         [HttpGet] // מחזיר את רשימת המשתמשים
         public ActionResult<List<User>> GetAll() => service.GetAll();
 
         [HttpGet("{id}")]
-        [Route("[action]")]
-
         public ActionResult<User> Get(int id)
         {
             var user = service.Get(id);
@@ -58,14 +54,13 @@ namespace Users.Controllers
 
             return user;
         }
-//if it dosent work...
+
         [HttpPost]
         [Route("[action]")]
-
-        public  IActionResult Create(User user)
+        public IActionResult Create(User user)
         {
             service.Add(user);
-            return  CreatedAtAction(nameof(Get), new { id = user.Id }, user);
+            return CreatedAtAction(nameof(Get), new { id = user.Id }, user);
         }
 
         [HttpPut("{id}")]

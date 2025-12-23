@@ -1,8 +1,26 @@
 const uri = '/User';
 let users = [];
 
+function authFetch(url, opts = {}) {
+    const token = localStorage.getItem('token');
+    opts.headers = Object.assign({}, opts.headers || {}, token ? { 'Authorization': 'Bearer ' + token } : {});
+    return fetch(url, opts).then(response => {
+        if (response.status === 401) {
+           
+            localStorage.removeItem('token');
+            if (window.showInlineLogin) {
+                try { window.showInlineLogin(); } catch (e) { }
+            } else {
+                location.href = 'login.html';
+            }
+            throw new Error('Unauthorized');
+        }
+        return response;
+    });
+}
+
 function getItems() {
-    fetch(uri)
+    authFetch(uri)
         .then(response => response.json())
         .then(data => _displayItems(data))
         .catch(error => console.error('Unable to get items.', error));
@@ -14,7 +32,7 @@ function addItem() {
         name: addNameTextbox.value.trim()
     };
 
-    fetch(uri, {
+    authFetch(uri, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -32,7 +50,7 @@ function addItem() {
 }
 
 function deleteItem(id) {
-    fetch(`${uri}/${id}`, {
+    authFetch(`${uri}/${id}`, {
             method: 'DELETE'
         })
         .then(() => getItems())
@@ -54,7 +72,7 @@ function updateItem() {
         name: document.getElementById('edit-name').value.trim()
     };
 
-    fetch(`${uri}/${itemId}`, {
+    authFetch(`${uri}/${itemId}`, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -89,13 +107,6 @@ function _displayItems(data) {
     const button = document.createElement('button');
 
     data.forEach(item => {
-        // let MilkiCheckbox = document.createElement('input');
-        // MilkiCheckbox.type = 'checkbox';
-        // MilkiCheckbox.disabled = true;
-        // // JSON returned from ASP.NET Core might use camelCase ("milki") or original PascalCase ("Milki").
-        // // Check both properties to set the checkbox correctly.
-        // MilkiCheckbox.checked = item.Milki ?? item.milki ?? false;
-
         let editButton = button.cloneNode(false);
         editButton.innerText = 'Edit';
         editButton.setAttribute('onclick', `displayEditForm(${item.id})`);

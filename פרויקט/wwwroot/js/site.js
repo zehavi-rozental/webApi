@@ -1,8 +1,26 @@
 const uri = '/IceCream';
 let iceCreams = [];
 
+function authFetch(url, opts = {}) {
+    const token = localStorage.getItem('token'); 
+    opts.headers = Object.assign({}, opts.headers || {}, token ? { 'Authorization': 'Bearer ' + token } : {});
+    return fetch(url, opts).then(response => {
+        if (response.status === 401) {
+            localStorage.removeItem('token');
+            if (window.showInlineLogin) {
+                try { window.showInlineLogin(); } catch (e) { }
+            } else {
+                // fallback: redirect to login page
+                location.href = 'login.html';
+            }
+            throw new Error('Unauthorized');
+        }
+        return response;
+    });
+}
+
 function getItems() {
-    fetch(uri)
+    authFetch(uri)
         .then(response => response.json())
         .then(data => _displayItems(data))
         .catch(error => console.error('Unable to get items.', error));
@@ -16,7 +34,7 @@ function addItem() {
         name: addNameTextbox.value.trim()
     };
 
-    fetch(uri, {
+    authFetch(uri, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -34,7 +52,7 @@ function addItem() {
 }
 
 function deleteItem(id) {
-    fetch(`${uri}/${id}`, {
+    authFetch(`${uri}/${id}`, {
             method: 'DELETE'
         })
         .then(() => getItems())
@@ -58,7 +76,7 @@ function updateItem() {
         name: document.getElementById('edit-name').value.trim()
     };
 
-    fetch(`${uri}/${itemId}`, {
+    authFetch(`${uri}/${itemId}`, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',

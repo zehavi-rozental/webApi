@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using IceCreams.Models;
 using IceCreams.Services;
@@ -9,6 +10,7 @@ namespace IceCreams.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class IceCreamController : ControllerBase
     {
         IIIceCreams service;

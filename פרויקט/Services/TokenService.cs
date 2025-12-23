@@ -29,7 +29,7 @@ namespace Token.Services
                 ValidIssuer = issuer,
                 ValidAudience = issuer,
                 IssuerSigningKey = key,
-                ClockSkew = TimeSpan.Zero // remove delay of token when expire
+                ClockSkew = TimeSpan.Zero 
             };
 
         public static string WriteToken(SecurityToken token) =>
