@@ -11,6 +11,33 @@ namespace Users.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
+
+        public AdminController() { }
+
+        [HttpPost]
+        [Route("[action]")]
+        public ActionResult<String> Login([FromBody] User User)
+        {
+            var dt = DateTime.Now;
+            //var query = $"select * from users where idnumber = @idnumber";
+            if (User.Username != "David"
+            || User.Password != $"W{dt.Year}#{dt.Day}!")
+            {
+                return Unauthorized();
+            }
+
+            var claims = new List<Claim>
+            {
+                new Claim("username", User.Username),
+                new Claim("type", "Admin"),
+            };
+
+            var token = FbiTokenService.GetToken(claims);
+
+            return new OkObjectResult(FbiTokenService.WriteToken(token));
+        }
+        //--------------
+         
         IIUsers service;
         public UserController(IIUsers ser)
         {
@@ -21,6 +48,8 @@ namespace Users.Controllers
         public ActionResult<List<User>> GetAll() => service.GetAll();
 
         [HttpGet("{id}")]
+        [Route("[action]")]
+
         public ActionResult<User> Get(int id)
         {
             var user = service.Get(id);
@@ -31,6 +60,8 @@ namespace Users.Controllers
         }
 //if it dosent work...
         [HttpPost]
+        [Route("[action]")]
+
         public  IActionResult Create(User user)
         {
             service.Add(user);
