@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using Users.Models;
 using Users.Services;
@@ -43,9 +44,11 @@ namespace Users.Controllers
         }
 
         [HttpGet] // מחזיר את רשימת המשתמשים
+        [Authorize]
         public ActionResult<List<User>> GetAll() => service.GetAll();
 
         [HttpGet("{id}")]
+        [Authorize]
         public ActionResult<User> Get(int id)
         {
             var user = service.Get(id);
@@ -56,7 +59,7 @@ namespace Users.Controllers
         }
 
         [HttpPost]
-        [Route("[action]")]
+        [Authorize]
         public IActionResult Create(User user)
         {
             service.Add(user);
@@ -64,6 +67,7 @@ namespace Users.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Update(int id, User user)
         {
             if (id != user.Id)
@@ -78,6 +82,7 @@ namespace Users.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             var user = service.Get(id);
