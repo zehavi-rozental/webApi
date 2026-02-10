@@ -1,2 +1,58 @@
-node_modules/
+# Build and compilation
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.nuget
+
+# Visual Studio
+.vs/
+.idea/
+*.sln.iml
+*.user
+*.suo
+*.sln.docstates
+.vscode/
+
+# IDE specific files
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Development configuration
+appsettings.Development.json
+appsettings.*.json
 .env
+.env.local
+
+# Node modules (if applicable)
+node_modules/
+
+# NuGet
+.nuget/
+*.nuget.props
+*.nuget.targets
+
+# Logs
+logs/
+*.log
+
+# Runtime configuration
+*.runtimeconfig.json
+runtimeconfig.json
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+# OS specific
+Thumbs.db
+.DS_Store
+
+# Database files (if applicable)
+*.db
+*.mdf
+*.ldf
