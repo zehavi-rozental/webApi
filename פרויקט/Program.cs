@@ -35,8 +35,18 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-builder.Logging.ClearProviders();//log4net seriLog
-builder.Logging.AddConsole(); //console
+// הגדרת Logging
+string executablePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+string binPath = Path.GetDirectoryName(executablePath) ?? AppContext.BaseDirectory;
+string logPath = Path.Combine(binPath, "logs");
+if (!Directory.Exists(logPath))
+{
+    Directory.CreateDirectory(logPath);
+}
+string logFilePath = Path.Combine(logPath, $"log_{DateTime.Now:yyyy-MM-dd}.txt");
+builder.Logging.SetMinimumLevel(LogLevel.Information);
+builder.Logging.AddFile(logFilePath);
+
 builder.Services.AddIceCreamService();
 builder.Services.AddUserService();
 

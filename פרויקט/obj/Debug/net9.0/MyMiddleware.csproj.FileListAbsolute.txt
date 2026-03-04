@@ -1,5 +1,7 @@
 C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\appsettings.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Data\IceCream.json
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Data\Users.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.staticwebassets.runtime.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.staticwebassets.endpoints.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.exe
@@ -7,11 +9,19 @@ C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware
 C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.runtimeconfig.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.dll
 C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.pdb
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.OpenApi.dll
 C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.csproj.AssemblyReference.cache
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\rpswa.dswa.cache.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.GeneratedMSBuildEditorConfig.editorconfig
@@ -25,6 +35,12 @@ C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\rjimswa.dswa
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\scopedcss\bundle\MyMiddleware.styles.css
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\dbqxbx2svv-2i51u8uma7.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\vmnfuw2ec1-6ulh2twiyv.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\km1cibjqea-7xyd7fcjwd.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\nvwquj8kzz-720ao8bsw9.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\0skg9rf76a-0r1rq2qwyn.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\wcpd4wdr1e-93w6tigtb9.gz
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.development.json
@@ -35,107 +51,3 @@ C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\refint\MyMid
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.pdb
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.genruntimeconfig.cache
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\ref\MyMiddleware.dll
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\appsettings.Development.json
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\appsettings.json
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.staticwebassets.runtime.json
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.staticwebassets.endpoints.json
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.exe
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.deps.json
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.runtimeconfig.json
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.dll
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.pdb
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.OpenApi.dll
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.csproj.AssemblyReference.cache
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.AssemblyInfoInputs.cache
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.AssemblyInfo.cs
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.csproj.CoreCompileInputs.cache
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.sourcelink.json
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\scopedcss\bundle\MyMiddleware.styles.css
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\dbqxbx2svv-m3rgwqeb0i.gz
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\vmnfuw2ec1-dun645r6mb.gz
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\km1cibjqea-c6xi6loyyp.gz
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\nvwquj8kzz-91832vbst5.gz
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\wcpd4wdr1e-s3x1hqrtti.gz
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.build.json
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.development.json
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets\msbuild.MyMiddleware.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets\msbuild.MyMiddleware.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets\msbuild.build.MyMiddleware.props
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.MyMiddleware.props
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.MyMiddleware.props
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.pack.json
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddle.F2DAB45E.Up2Date
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.dll
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\refint\MyMiddleware.dll
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.pdb
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.genruntimeconfig.cache
-C:\Users\huser\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\ref\MyMiddleware.dll
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\appsettings.Development.json
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\appsettings.json
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\Data\IceCream.json
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\Data\Users.json
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.staticwebassets.runtime.json
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.staticwebassets.endpoints.json
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.exe
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.deps.json
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.runtimeconfig.json
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.dll
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\MyMiddleware.pdb
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\Microsoft.OpenApi.dll
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.csproj.AssemblyReference.cache
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.GeneratedMSBuildEditorConfig.editorconfig
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.AssemblyInfoInputs.cache
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.AssemblyInfo.cs
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.csproj.CoreCompileInputs.cache
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.MvcApplicationPartsAssemblyInfo.cs
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.MvcApplicationPartsAssemblyInfo.cache
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.sourcelink.json
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\scopedcss\bundle\MyMiddleware.styles.css
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\compressed\dbqxbx2svv-m3rgwqeb0i.gz
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\compressed\vmnfuw2ec1-dun645r6mb.gz
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\compressed\km1cibjqea-c6xi6loyyp.gz
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\compressed\nvwquj8kzz-91832vbst5.gz
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\compressed\wcpd4wdr1e-s3x1hqrtti.gz
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.build.json
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.development.json
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\staticwebassets\msbuild.MyMiddleware.Microsoft.AspNetCore.StaticWebAssets.props
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\staticwebassets\msbuild.MyMiddleware.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\staticwebassets\msbuild.build.MyMiddleware.props
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.MyMiddleware.props
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.MyMiddleware.props
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.pack.json
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddle.F2DAB45E.Up2Date
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.dll
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\refint\MyMiddleware.dll
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.pdb
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.genruntimeconfig.cache
-Z:\יד תשפו\רוזנטל זהבה\זילברברג\project\webApi\פרויקט\obj\Debug\net9.0\ref\MyMiddleware.dll
-C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Data\IceCream.json
-C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Data\Users.json
-C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
-C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\user\Documents\GitHub\webApi\פרויקט\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\dbqxbx2svv-2i51u8uma7.gz
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\vmnfuw2ec1-6ulh2twiyv.gz
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\km1cibjqea-7xyd7fcjwd.gz
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\nvwquj8kzz-720ao8bsw9.gz
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\0skg9rf76a-0r1rq2qwyn.gz
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\wcpd4wdr1e-93w6tigtb9.gz
