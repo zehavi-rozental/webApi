@@ -5,12 +5,69 @@
     <meta charset="UTF-8">
     <title>Ice cream</title>
     <link rel="stylesheet" href="css/site.css" />
+    <style>
+        /* Toast Notifications */
+        .toast {
+            position: absolute;
+            padding: 12px 20px;
+            border-radius: 4px;
+            color: white;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        .toast-success {
+            background-color: #10b981;
+        }
+
+        .toast-error {
+            background-color: #ef4444;
+        }
+
+        .toast-warning {
+            background-color: #f59e0b;
+        }
+
+        .toast-info {
+            background-color: #3b82f6;
+        }
+
+        .admin-only {
+            display: none;
+        }
+
+        .admin-only.show {
+            display: block;
+        }
+
+        .nav-link {
+            cursor: pointer;
+            color: #7a5863;
+            font-weight: 500;
+            text-decoration: underline;
+            margin-right: 20px;
+        }
+
+        .nav-link:hover {
+            color: #5a4863;
+        }
+    </style>
 </head>
 
 <body>
     <header style="max-width:820px;margin:0 auto 1rem;display:flex;justify-content:space-between;align-items:center;">
         <div id="greeting" style="color:#7a5863;font-weight:500;"></div>
-        <div><!-- no login/logout buttons per request --></div>
+        <div>
+            <span id="adminLink" class="nav-link" onclick="location.href='user.html'" style="display:none;">👥 Users</span>
+            <button id="logoutBtn" onclick="handleLogout()" style="padding:8px 16px;background-color:#dc2626;color:white;border:none;border-radius:4px;cursor:pointer;">Logout</button>
+        </div>
     </header>
 
     <div id="inlineLogin" class="login-card" style="max-width:520px;margin:1rem auto;display:none;">
@@ -23,7 +80,6 @@
     </div>
 
     <div id="protectedContent" style="display:none;">
-        <h3 onclick="location.href='user.html'">Users</h3>
         <h1>Ice cream🍦</h1>
         <h3>Add</h3>
         <form id="addForm" action="javascript:void(0);" method="POST" onsubmit="addItem()">
@@ -44,6 +100,10 @@
 
         <p id="counter"></p>
 
+        <div id="activityFeed">
+            <h3>Activity Feed</h3>
+            <ul id="activityList"></ul>
+        </div>
         <table>
             <tr>
                 <th>Is milki?</th>
@@ -56,7 +116,6 @@
     </div>
 
     <script>
-     
         function getToken() { return localStorage.getItem('token'); }
         function setToken(token) {  localStorage.setItem('token', token); }
         function removeToken() { localStorage.removeItem('token'); }
@@ -78,21 +137,46 @@
             if (!p) return null;
             return p.name || p.unique_name || p.username || p.sub || null;
         }
+        function getUserRole() {
+            const p = getPayloadFromToken();
+            if (!p) return null;
+            return p.role || p['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] || null;
+        }
 
         // DOM-ready initialization: show inline login when not authenticated, show protected content when authenticated
         document.addEventListener('DOMContentLoaded', () => {
             const greetingEl = document.getElementById('greeting');
             const protectedEl = document.getElementById('protectedContent');
             const inlineLogin = document.getElementById('inlineLogin');
+            const adminLink = document.getElementById('adminLink');
 
             function showProtected() {
                 if (inlineLogin) inlineLogin.style.display = 'none';
                 if (protectedEl) protectedEl.style.display = 'block';
                 const currentName = getUserName();
+                const currentRole = getUserRole();
     
+                if (greetingEl) {
+                    greetingEl.innerText = `Welcome, ${currentName}!`;
+                }
+
+                // Debug: log the role to console
+                console.log('Current role:', currentRole, 'Type:', typeof currentRole);
+
+                // Show admin link only if user is admin
+                if (adminLink) {
+                    if (currentRole && (currentRole === 'Admin' || currentRole.toLowerCase() === 'admin')) {
+                        adminLink.style.display = 'inline-block';
+                        console.log('Admin link shown');
+                    } else {
+                        adminLink.style.display = 'none';
+                        console.log('Admin link hidden');
+                    }
+                }
+
                 if (getToken()) {
-                    // fetch items after showing protected area
                     getItems();
+                    initSignalR();
                 }
             }
 
@@ -100,6 +184,7 @@
                 if (inlineLogin) inlineLogin.style.display = 'block';
                 if (protectedEl) protectedEl.style.display = 'none';
                 greetingEl.innerText = '';
+                if (adminLink) adminLink.style.display = 'none';
             }
 
             if (getToken()) {
@@ -119,15 +204,15 @@
                 const err = document.getElementById('inline-error');
                 if (err) err.style.display = 'none';
                 try {
-                    const res = await fetch('/User/Login', {
+                    const res = await fetch('/api/login', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ Username: user, Password: pass })
                     });
                     if (res.ok) {
                         const token = await res.text();
-                        setToken(token); // שמירת הטוקן ב-localStorage
-                        showProtected();
+                        setToken(token);
+                        location.reload(); // Refresh to reinitialize everything
                     } else if (res.status === 401) {
                         if (err) { err.innerText = 'שם משתמש או סיסמה שגויים.'; err.style.display = 'block'; }
                     } else {
@@ -139,14 +224,8 @@
             };
         });
     </script>
-
+    <script src="js/signalr.min.js"></script>
     <script src="js/site.js" asp-append-version="true"></script>
-    <script type="text/javascript">
-        // Only fetch items if there's a token. If not, the inline login will appear.
-        if (getToken()) {
-            getItems();
-        }
-    </script>
 </body>
 
 </html>

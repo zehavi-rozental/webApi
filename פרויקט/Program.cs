@@ -1,16 +1,52 @@
-using IceCreams.Services;
-using Users.Services;
 using MyMiddleware;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Token.Services;
-using Microsoft.OpenApi.Models; // לצורך הגדרת SecurityScheme ב-Swagger
-// using Microsoft.Extensions.Logging; 
+using MyMiddleware.Extensions;
+using KsIceCream.Hubs;
+using Microsoft.OpenApi.Models;
+using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// --- הגדרת Serilog ---
+string executablePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+string binPath = Path.GetDirectoryName(executablePath) ?? AppContext.BaseDirectory;
+string logPath = Path.Combine(binPath, "logs");
+
+if (!Directory.Exists(logPath))
+{
+    Directory.CreateDirectory(logPath);
+}
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning) // מונע הצפת לוגים של המערכת
+    .WriteTo.Console() // מאפשר לראות את ה-URL והודעות בטרמינל
+    .WriteTo.File(
+        path: Path.Combine(logPath, "app-.txt"),
+        rollingInterval: RollingInterval.Day,
+        fileSizeLimitBytes: 52428800, // 50 MB
+        retainedFileCountLimit: 30,
+        outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
+    .CreateLogger();
+
+builder.Host.UseSerilog();
+
+// --- הגדרת CORS ---
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
+// --- רישום שירותים (Services) ---
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// הגדרת Swagger עם תמיכה ב-Authorization Header (Authorize button)
+// הגדרת Swagger עם תמיכה ב-JWT
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -20,7 +56,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "הדבק כאן: Bearer <token>\n(ניתן להעתיק את הטוקן שקיבלת מ-/User/Login)"
+        Description = "Paste here: Bearer <token>\n(Copy the token from /User/Login)"
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -35,43 +71,24 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// הגדרת Logging
-string executablePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-string binPath = Path.GetDirectoryName(executablePath) ?? AppContext.BaseDirectory;
-string logPath = Path.Combine(binPath, "logs");
-if (!Directory.Exists(logPath))
-{
-    Directory.CreateDirectory(logPath);
-}
-string logFilePath = Path.Combine(logPath, $"log_{DateTime.Now:yyyy-MM-dd}.txt");
-builder.Logging.SetMinimumLevel(LogLevel.Information);
-builder.Logging.AddFile(logFilePath);
-
-builder.Services.AddIceCreamService();
-builder.Services.AddUserService();
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = TokenService.GetTokenValidationParameters();
-    });
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-
-
-
-// builder.Logging.SetMinimumLevel(LogLevel.Debug);
-// builder.Logging.AddProvider(new FileLoggerProvider("log.txt"));
+// רישום שירותי האפליקציה דרך ה-Extension שלך
+builder.Services.AddMyServices(builder.Configuration);
 
 var app = builder.Build();
+
+// --- הגדרת Pipeline (Middleware) ---
+
+// שימוש ב-Middleware של הלוגים שלך
 app.UseMyLogMiddleware();
-// Configure the HTTP request pipeline.
+
+// הפעלת CORS
+app.UseCors("AllowLocalhost");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
@@ -82,4 +99,20 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+// מיפוי SignalR
+app.MapHub<ActivityHub>("/activityHub");
+
+// --- הרצת האפליקציה עם טיפול בשגיאות ---
+try
+{
+    Log.Information("Application starting up...");
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application failed to start correctly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}

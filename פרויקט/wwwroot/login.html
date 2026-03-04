@@ -39,7 +39,7 @@
             const errorEl = document.getElementById('error');
             errorEl.style.display = 'none';
             try {
-                const res = await fetch('/User/Login', {
+                const res = await fetch('/api/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ Username: username, Password: password })
