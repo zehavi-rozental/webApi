@@ -9,6 +9,5 @@ namespace ServiceIceCream.interfaces
         void Add(IceCream iceCream);
         void Delete(int id);
         void Update(IceCream iceCream);
-        void DeleteAllByUserId(string userId);
     }
 }

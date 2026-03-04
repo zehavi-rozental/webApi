@@ -73,9 +73,9 @@ public abstract class GenericJsonService<T> where T : class
         }
     }
 
-    public virtual List<T> GetAll() => Items;
+    public List<T> GetAll() => Items;
 
-    public virtual T? Get(int id)
+    public T? Get(int id)
     {
         var idProperty = typeof(T).GetProperty("Id");
         if (idProperty == null)

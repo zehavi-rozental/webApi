@@ -7,90 +7,62 @@ using System.Linq;
 using Users.Models;
 using Users.Services;
 using ServiceUsers.interfaces;
-using ServiceIceCream.interfaces;
 using Token.Services;
 
 namespace Users.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IIUsers userService;
-        private readonly IIIceCreams iceCreamService;
+        IIUsers service;
 
-        public UserController(IIUsers userService, IIIceCreams iceCreamService)
+        public UserController(IIUsers ser)
         {
-            this.userService = userService;
-            this.iceCreamService = iceCreamService;
+            this.service = ser;
         }
 
         [HttpPost]
-        [Route("/api/login")]
+        [Route("[action]")]
         public ActionResult<string> Login([FromBody] LoginRequest request)
         {
-            // אימות משתמש מול ה-database
-            var users = userService.GetAll();
-            var user = users.FirstOrDefault(u => u.Name == request.Username && u.Password == request.Password);
-            
-            if (user == null)
+            var dt = DateTime.Now;
+
+             if (request.Username != "lali" || request.Password != "123")
             {
                 return Unauthorized();
-            }
+            }   
 
-            // יצירת JWT עם claims נכונים
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.Name),
-                new Claim("username", user.Name),
-                new Claim("userId", user.Id.ToString()),
-                new Claim(ClaimTypes.Role, user.Role),
+                new Claim(ClaimTypes.Name, request.Username),
+                new Claim("type", "Admin"),
             };
 
             var token = TokenService.GetToken(claims);
             return Ok(TokenService.WriteToken(token));
         }
 
-        [HttpGet] // Returns list of all users - Admin only
-        [Authorize(Roles = "Admin")]
-        public ActionResult<List<User>> GetAll() => Ok(userService.GetAll());
-
-        [HttpGet]
-        [Route("me")]
+        [HttpGet] // מחזיר את רשימת המשתמשים
         [Authorize]
-        public ActionResult<User> Me()
-        {
-            var username = User.Identity?.Name;
-            if (string.IsNullOrEmpty(username))
-                return Unauthorized();
-            var users = userService.GetAll();
-            var user = users.FirstOrDefault(u => u.Name == username);
-            if (user == null)
-                return NotFound();
-            return Ok(user);
-        }
+        public ActionResult<List<User>> GetAll() => service.GetAll();
 
         [HttpGet("{id}")]
         [Authorize]
         public ActionResult<User> Get(int id)
         {
-            var user = userService.Get(id);
+            var user = service.Get(id);
             if (user == null)
                 return NotFound();
 
-            // Users can only view their own profile, admins can view anyone's
-            var currentUserId = User.FindFirst("userId")?.Value;
-            if (User.IsInRole("Admin") == false && currentUserId != id.ToString())
-                return Forbid();
-
-            return Ok(user);
+            return user;
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public IActionResult Create(User user)
         {
-            userService.Add(user);
+            service.Add(user);
             return CreatedAtAction(nameof(Get), new { id = user.Id }, user);
         }
 
@@ -101,32 +73,22 @@ namespace Users.Controllers
             if (id != user.Id)
                 return BadRequest();
 
-            var existingUser = userService.Get(id);
+            var existingUser = service.Get(id);
             if (existingUser is null)
                 return NotFound();
 
-            // Allow admin or self
-            var currentUserId = User.FindFirst("userId")?.Value;
-            if (User.IsInRole("Admin") == false && currentUserId != id.ToString())
-                return Forbid();
-
-            userService.Update(user);
+            service.Update(user);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
-            var user = userService.Get(id);
+            var user = service.Get(id);
             if (user is null)
                 return NotFound();
-
-            // Cascading delete: delete all items belonging to this user
-            iceCreamService.DeleteAllByUserId(user.Id.ToString());
-
-            // Then delete the user
-            userService.Delete(id);
+            service.Delete(id);
             return NoContent();
         }
     }
