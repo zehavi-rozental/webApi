@@ -28,9 +28,7 @@
     </main>
 
     <script>
-        if (localStorage.getItem('token')) {
-            location.href = 'index.html';
-        }
+        // Allow users to login even if they have a token (they might want to switch users)
 
         async function loginUser(e) {
             e.preventDefault();

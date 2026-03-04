@@ -325,5 +325,6 @@ function handleLogout() {
     if (signalRConnection) {
         signalRConnection.stop();
     }
-    location.href = 'login.html';
+    // Show login form instead of redirecting to login.html
+    location.reload();
 }

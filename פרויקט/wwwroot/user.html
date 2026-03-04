@@ -83,7 +83,12 @@
             <h3>Edit User</h3>
             <form action="javascript:void(0);" onsubmit="updateItem()">
                 <input type="hidden" id="edit-id">
-                <input type="text" id="edit-name" placeholder="User name">
+                <input type="text" id="edit-name" placeholder="User name" required>
+                <input type="password" id="edit-password" placeholder="New password (leave empty to keep current)">
+                <select id="edit-role">
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
                 <input type="submit" value="Save">
                 <a onclick="closeInput()" aria-label="Close">&#10006;</a>
             </form>
@@ -94,6 +99,7 @@
         <table>
             <tr>
                 <th>Name</th>
+                <th>Role</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -134,7 +140,7 @@
 
         function handleLogout() {
             removeToken();
-            location.href = 'login.html';
+            location.reload();
         }
 
         // ===== Toast Notifications =====
@@ -261,6 +267,8 @@
             }
 
             document.getElementById('edit-name').value = user.name;
+            document.getElementById('edit-password').value = ''; // Don't show current password
+            document.getElementById('edit-role').value = user.role || 'User';
             document.getElementById('edit-id').value = user.id;
             document.getElementById('editForm').style.display = 'block';
         }
@@ -268,10 +276,17 @@
         function updateUser() {
             const userId = document.getElementById('edit-id').value;
             const name = document.getElementById('edit-name').value.trim();
+            const password = document.getElementById('edit-password').value.trim();
+            const role = document.getElementById('edit-role').value;
 
             if (!name) {
                 showToast('Name cannot be empty', 'warning');
                 return false;
+            }
+
+            const updateData = { id: parseInt(userId), name: name, role: role };
+            if (password) {
+                updateData.password = password;
             }
 
             authFetch(`${userApiUri}/${userId}`, {
@@ -280,7 +295,7 @@
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id: parseInt(userId), name: name })
+                body: JSON.stringify(updateData)
             })
                 .then(response => {
                     if (response.ok) {
@@ -331,10 +346,13 @@
                 td1.appendChild(document.createTextNode(user.name));
 
                 let td2 = tr.insertCell(1);
-                td2.appendChild(editButton);
+                td2.appendChild(document.createTextNode(user.role || 'User'));
 
                 let td3 = tr.insertCell(2);
-                td3.appendChild(deleteButton);
+                td3.appendChild(editButton);
+
+                let td4 = tr.insertCell(3);
+                td4.appendChild(deleteButton);
             });
 
             users = data;
@@ -447,7 +465,7 @@
         }
 
         if (getToken()) {
-            getItems();
+            getUsers();
         }
     </script>
 </body>

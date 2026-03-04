@@ -4,51 +4,53 @@ using KsIceCream.Hubs;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Events;
+using Serilog.Sinks.SystemConsole.Themes;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// --- הגדרת Serilog ---
-string executablePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-string binPath = Path.GetDirectoryName(executablePath) ?? AppContext.BaseDirectory;
-string logPath = Path.Combine(binPath, "logs");
+// --- הגדרת נתיב לוגים ---
+string logPath = Path.Combine(AppContext.BaseDirectory, "logs");
+if (!Directory.Exists(logPath)) Directory.CreateDirectory(logPath);
 
-if (!Directory.Exists(logPath))
-{
-    Directory.CreateDirectory(logPath);
-}
-
+// --- הגדרת Serilog עם צבעים (Themes) ותבנית נקייה ---
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
-    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning) // מונע הצפת לוגים של המערכת
-    .WriteTo.Console() // מאפשר לראות את ה-URL והודעות בטרמינל
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information) // מחזיר את הודעות ה-URL המקוריות של המערכת
+    .Enrich.FromLogContext()
+    // הגדרת הקונסול עם צבעים כמו ב-Default של .NET
+    .WriteTo.Console(
+        applyThemeToRedirectedOutput: true,
+        theme: AnsiConsoleTheme.Code, 
+        outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+    // כתיבה לקובץ (נשארת ללא שינוי ביעילות)
     .WriteTo.File(
         path: Path.Combine(logPath, "app-.txt"),
         rollingInterval: RollingInterval.Day,
-        fileSizeLimitBytes: 52428800, // 50 MB
+        fileSizeLimitBytes: 52428800,
         retainedFileCountLimit: 30,
         outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
     .CreateLogger();
 
 builder.Host.UseSerilog();
 
-// --- הגדרת CORS ---
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowLocalhost", builder =>
-    {
-        builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader();
-    });
-});
-
 // --- רישום שירותים (Services) ---
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// הגדרת Swagger עם תמיכה ב-JWT
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost", b =>
+    {
+        b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
+
+// Swagger עם JWT
 builder.Services.AddSwaggerGen(c =>
 {
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ice Cream API", Version = "v1" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -56,33 +58,23 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Paste here: Bearer <token>\n(Copy the token from /User/Login)"
+        Description = "Enter: Bearer <token>"
     });
-
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
-            },
+            new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" } },
             Array.Empty<string>()
         }
     });
 });
 
-// רישום שירותי האפליקציה דרך ה-Extension שלך
+// רישום שירותים חיצוניים
 builder.Services.AddMyServices(builder.Configuration);
 
 var app = builder.Build();
 
-// --- הגדרת Pipeline (Middleware) ---
-
-// שימוש ב-Middleware של הלוגים שלך
-app.UseMyLogMiddleware();
-
-// הפעלת CORS
-app.UseCors("AllowLocalhost");
+// --- Pipeline (Middleware) ---
 
 if (app.Environment.IsDevelopment())
 {
@@ -94,23 +86,26 @@ app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseHttpsRedirection();
 
+app.UseCors("AllowLocalhost");
+
+// ה-Middleware שלך לתיעוד בקשות
+app.UseMyLogMiddleware();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
-// מיפוי SignalR
 app.MapHub<ActivityHub>("/activityHub");
 
-// --- הרצת האפליקציה עם טיפול בשגיאות ---
+// --- הרצה ---
 try
 {
-    Log.Information("Application starting up...");
+    Log.Information("Starting Web Host...");
     app.Run();
 }
 catch (Exception ex)
 {
-    Log.Fatal(ex, "Application failed to start correctly");
+    Log.Fatal(ex, "Host terminated unexpectedly");
 }
 finally
 {
