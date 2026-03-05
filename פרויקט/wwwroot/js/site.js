@@ -328,3 +328,86 @@ function handleLogout() {
     // Show login form instead of redirecting to login.html
     location.reload();
 }
+
+// ===== App Initialization =====
+window.showInlineLogin = function() {
+    document.getElementById('protectedContent').style.display = 'none';
+    document.getElementById('inlineLogin').style.display = 'block';
+    document.getElementById('greeting').innerText = '';
+    document.getElementById('adminLink').style.display = 'none';
+    document.getElementById('logoutBtn').style.display = 'none';
+};
+
+function showProtectedContent() {
+    document.getElementById('protectedContent').style.display = 'block';
+    document.getElementById('inlineLogin').style.display = 'none';
+    
+    const username = getUserName();
+    if (username) {
+        document.getElementById('greeting').innerText = `Hello, ${username}!`;
+    }
+    
+    if (isAdmin()) {
+        document.getElementById('adminLink').style.display = 'inline';
+    }
+    
+    document.getElementById('logoutBtn').style.display = 'inline';
+    
+    // Load data and initialize SignalR
+    getItems();
+    initSignalR();
+}
+
+// ===== Inline Login Handling =====
+function handleInlineLogin(event) {
+    event.preventDefault();
+    
+    const username = document.getElementById('inline-username').value;
+    const password = document.getElementById('inline-password').value;
+    const errorEl = document.getElementById('inline-error');
+    
+    if (!username || !password) {
+        errorEl.innerText = 'Please enter both username and password';
+        errorEl.style.display = 'block';
+        return;
+    }
+    
+    fetch('/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.text(); // Get token as string, not JSON
+        } else {
+            throw new Error('Login failed');
+        }
+    })
+    .then(token => {
+        if (token) {
+            setToken(token); // Save token directly
+            showProtectedContent();
+        } else {
+            throw new Error('No token received');
+        }
+    })
+    .catch(error => {
+        console.error('Login error:', error);
+        errorEl.innerText = 'שם משתמש או סיסמה שגויים';
+        errorEl.style.display = 'block';
+    });
+}
+
+// ===== App Startup =====
+document.addEventListener('DOMContentLoaded', function() {
+    if (getToken()) {
+        // User is logged in, show protected content
+        showProtectedContent();
+    } else {
+        // User is not logged in, show login form
+        window.showInlineLogin();
+    }
+});
