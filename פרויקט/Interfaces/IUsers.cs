@@ -1,4 +1,4 @@
-using Users.Models;
+using MyMiddleware.Models;
 
 namespace ServiceUsers.interfaces
 {

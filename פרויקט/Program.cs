@@ -1,13 +1,17 @@
 using MyMiddleware;
+using MyMiddleware.Models;
 using MyMiddleware.Extensions;
+using MyMiddleware.Services;
+using MyMiddleware.BackgroundServices;
 using KsIceCream.Hubs;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Events;
 
-var builder = WebApplication.CreateBuilder(args);
+// 1. קודם כל יוצרים את ה-builder
+var builder = WebApplication.CreateBuilder(args); 
 
-// --- הגדרת Serilog ---
+// 2. מגדירים את הנתיבים ללוג
 string executablePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
 string binPath = Path.GetDirectoryName(executablePath) ?? AppContext.BaseDirectory;
 string logPath = Path.Combine(binPath, "logs");
@@ -17,23 +21,30 @@ if (!Directory.Exists(logPath))
     Directory.CreateDirectory(logPath);
 }
 
+var logFile = Path.Combine(logPath, "app-.txt");
+
+// 3. מגדירים את ה-Logger
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
-    // הגדרה זו מאפשרת לראות את הודעות ה-Listening (הקישורים) בטרמינל
-    .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
-    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information) 
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
     .WriteTo.Console()
     .WriteTo.File(
-        path: Path.Combine(logPath, "app-.txt"),
+        path: logFile,
         rollingInterval: RollingInterval.Day,
-        fileSizeLimitBytes: 52428800, // 50 MB
-        retainedFileCountLimit: 30,
+        buffered: false,
+        shared: true,
         outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
     .CreateLogger();
 
+// 4. מחברים את Serilog ל-builder (רק פעם אחת!)
 builder.Host.UseSerilog();
 
-// --- הגדרת CORS ---
+// --- 2. רישום שירותים (Dependency Injection) ---
+
+// NOTE: Background logging services נרשמים ב-AddMyServices כדי לשמור על חלוקה ברורה של רישום שירותים.
+
+// הגדרת CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost", policy =>
@@ -44,11 +55,10 @@ builder.Services.AddCors(options =>
     });
 });
 
-// --- רישום שירותים (Services) ---
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// הגדרת Swagger עם תמיכה ב-JWT
+// הגדרת Swagger עם תמיכה ב-JWT לשימוש בבקרים
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -58,7 +68,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Paste here: Bearer <token>\n(Copy the token from /User/Login)"
+        Description = "Paste here: Bearer <token>"
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -73,18 +83,28 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// רישום שירותי האפליקציה דרך ה-Extension שלך
+// רישום שירותי האפליקציה (גלידות, משתמשים וכו') דרך ה-Extension
 builder.Services.AddMyServices(builder.Configuration);
 
 var app = builder.Build();
 
-// --- הגדרת Pipeline (Middleware) ---
+// --- 3. הגדרת Pipeline (סדר ה-Middleware) ---
 
-// שימוש ב-Middleware של הלוגים שלך
+// א. המידלוור שלך ראשון - כדי שיוכל למדוד זמן (Duration) של כל הצינור
 app.UseMyLogMiddleware();
 
-// הפעלת CORS - חייב להופיע לפני הניתובים
+// ב. אבטחה וגישה
 app.UseCors("AllowLocalhost");
+app.UseHttpsRedirection();
+
+// ג. קבצים סטטיים (חשוב שיופיעו לפני ה-Routing)
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
+// ד. ניתוב ואבטחה (Authentication חייב לבוא לפני Authorization)
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 
 if (app.Environment.IsDevelopment())
 {
@@ -92,19 +112,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseDefaultFiles();
-app.UseStaticFiles();
-app.UseHttpsRedirection();
-
-app.UseAuthentication();
-app.UseAuthorization();
-
+// ה. מיפוי נקודות קצה (Controllers ו-SignalR)
 app.MapControllers();
-
-// מיפוי SignalR
 app.MapHub<ActivityHub>("/activityHub");
 
-// --- הרצת האפליקציה עם טיפול בשגיאות ---
+// --- 4. הרצת האפליקציה ---
 try
 {
     Log.Information("Application starting up...");

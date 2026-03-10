@@ -4,13 +4,12 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
-using Users.Models;
-using Users.Services;
+using MyMiddleware.Models;
+using MyMiddleware.Services;
 using ServiceUsers.interfaces;
 using ServiceIceCream.interfaces;
-using Token.Services;
 
-namespace Users.Controllers
+namespace MyMiddleware.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

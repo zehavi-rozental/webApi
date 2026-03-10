@@ -1,11 +1,9 @@
-using Users.Models;
+using MyMiddleware.Models;
 using ServiceUsers.interfaces;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Services;
 using ServiceIceCream.interfaces;
 
-namespace Users.Services;
-
+namespace MyMiddleware.Services;
 public class UserService : GenericJsonService<User>, IIUsers
 {
     private readonly IIIceCreams? iceCreamService;

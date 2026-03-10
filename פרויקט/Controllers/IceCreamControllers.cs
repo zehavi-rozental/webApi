@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
-using IceCreams.Models;
-using IceCreams.Services;
+using MyMiddleware.Models;
+using MyMiddleware.Services;
 using ServiceIceCream.interfaces;
 using Shared.Interfaces;
 
-namespace IceCreams.Controllers
+namespace MyMiddleware.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

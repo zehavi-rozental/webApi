@@ -1,10 +1,6 @@
 using System.Text.Json;
-namespace Shared.Services;
+namespace MyMiddleware.Services;
 
-/// <summary>
-/// Generic base service for JSON-based CRUD operations
-/// Eliminates code duplication between IceCreamService and UserService
-/// </summary>
 public abstract class GenericJsonService<T> where T : class
 {
     protected List<T> Items;

@@ -2,8 +2,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Shared.Interfaces;
 
-namespace Shared.Services
-{
+namespace MyMiddleware.Services;
     public class ActiveUserService : IActiveUser
     {
         private readonly IHttpContextAccessor httpContextAccessor;
@@ -37,4 +36,3 @@ namespace Shared.Services
             }
         }
     }
-}

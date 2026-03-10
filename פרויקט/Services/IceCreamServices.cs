@@ -1,14 +1,12 @@
-using IceCreams.Models;
+using MyMiddleware.Models;
 using ServiceIceCream.interfaces;
 using KsIceCream.Hubs;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Services;
 using Shared.Interfaces;
 using Microsoft.AspNetCore.SignalR;
 using System.Linq;
 
-namespace IceCreams.Services;
-
+namespace MyMiddleware.Services;
 public class IceCreamService : GenericJsonService<IceCream>, IIIceCreams
 {
     private readonly IActiveUser activeUser;

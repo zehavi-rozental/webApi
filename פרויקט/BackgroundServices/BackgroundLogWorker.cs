@@ -1,8 +1,7 @@
 using MyMiddleware.Services;
 using Serilog;
 
-namespace MyMiddleware.BackgroundServices
-{
+namespace MyMiddleware.BackgroundServices;
     /// <summary>
     /// Background service that processes logs from the queue asynchronously
     /// Writes to disk using Serilog with rolling file policies
@@ -26,25 +25,13 @@ namespace MyMiddleware.BackgroundServices
             {
                 while (!stoppingToken.IsCancellationRequested)
                 {
-                    // Try to dequeue a log entry
-                    if (logQueue.TryDequeueLog(out var logEntry))
-                    {
-                        // Write the log asynchronously
-                        await Task.Run(() =>
-                        {
-                            if (logEntry != null)
-                            {
-                                string logMessage = FormatLogEntry(logEntry);
-                                Log.Information(logMessage);
-                            }
-                        }, stoppingToken);
-                    }
-                    else
-                    {
-                        // No logs to process, wait a bit before checking again
-                        await Task.Delay(100, stoppingToken);
-                    }
-                }
+                    // Wait for the next log entry to be queued (async, without polling)
+                    var logEntry = await logQueue.DequeueAsync(stoppingToken);
+                    if (logEntry == null)
+                        continue;
+
+                    var logMessage = FormatLogEntry(logEntry);
+logger.LogInformation(logMessage);                }
             }
             catch (OperationCanceledException)
             {
@@ -57,11 +44,12 @@ namespace MyMiddleware.BackgroundServices
         }
 
         private string FormatLogEntry(MyMiddleware.Models.LogEntry logEntry)
-        {
-            return $"[{logEntry.StartTime:yyyy-MM-dd HH:mm:ss}] " +
-                   $"Controller: {logEntry.ControllerAction} | " +
-                   $"User: {logEntry.UserName} | " +
-                   $"Duration: {logEntry.DurationMs}ms";
-        }
-    }
+{
+    return $"ACTION: {logEntry.HttpMethod} {logEntry.Path} | " +
+           $"Controller: {logEntry.ControllerAction} | " +
+           $"User: {logEntry.UserName} | " +
+           $"Status: {logEntry.StatusCode} | " +
+           $"Duration: {logEntry.DurationMs}ms";
 }
+        
+    }

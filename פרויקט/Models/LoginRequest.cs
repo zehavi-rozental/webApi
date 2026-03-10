@@ -1,4 +1,4 @@
-namespace Users.Models
+namespace MyMiddleware.Models
 {
     public class LoginRequest
     {

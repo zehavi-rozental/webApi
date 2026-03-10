@@ -1,4 +1,4 @@
-namespace IceCreams.Models
+namespace MyMiddleware.Models
 {
     public class IceCream
     {

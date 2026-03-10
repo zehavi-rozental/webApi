@@ -1,8 +1,4 @@
-using IceCreams.Services;
-using Users.Services;
-using Token.Services;
 using Shared.Interfaces;
-using Shared.Services;
 using MyMiddleware.Services;
 using MyMiddleware.Interfaces;
 using MyMiddleware.BackgroundServices;

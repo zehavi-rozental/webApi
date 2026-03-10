@@ -1,20 +1,14 @@
 using System.Diagnostics;
 using MyMiddleware.Models;
 using MyMiddleware.Services;
+using MyMiddleware.BackgroundServices;
 
 namespace MyMiddleware;
 
-/// <summary>
-/// Middleware that logs all HTTP requests asynchronously
-/// Captures: endpoint, method, execution time, status code, user info
-/// </summary>
 public class MyLogMiddleware
 {
-    // Delegate to continue the request to the next middleware
     private readonly RequestDelegate _next;
-    // Logger for middleware-level issues
     private readonly ILogger _logger;
-    // Background queue for async logging
     private readonly BackgroundLogQueue _logQueue;
 
     public MyLogMiddleware(RequestDelegate next, ILogger<MyLogMiddleware> logger, BackgroundLogQueue logQueue)
@@ -24,103 +18,78 @@ public class MyLogMiddleware
         _logQueue = logQueue;
     }
 
-    /// <summary>
-    /// Process the request and queue it for async logging
-    /// </summary>
     public async Task Invoke(HttpContext context)
     {
-        // Capture original request details
+        // 1. איסוף נתונים התחלתיים
         string method = context.Request.Method;
         string path = context.Request.Path;
-        string controllerAction = ExtractControllerAction(path);
+        string controllerAction = ExtractControllerAction(context);
         
-        var userId = context.User?.FindFirst("userId")?.Value ?? "unknown";
-        var username = context.User?.FindFirst("username")?.Value ?? userId;
+        // שליפת שם משתמש מה-Token (Claims)
+        var username = context.User?.FindFirst("username")?.Value 
+                       ?? context.User?.FindFirst("userId")?.Value 
+                       ?? "Guest";
 
-        // Start timing
         var startTime = DateTime.Now;
-        var stopwatch = new Stopwatch();
-        stopwatch.Start();
+        var stopwatch = Stopwatch.StartNew();
 
         int statusCode = 0;
+
         try
         {
-            // Execute the request through the pipeline
+            // 2. המשך הצינור (Pipeline)
             await _next.Invoke(context);
             statusCode = context.Response.StatusCode;
         }
-        catch (Exception ex)
+        catch (Exception)
+        {
+            statusCode = 500;
+            throw; // חשוב לזרוק את השגיאה הלאה
+        }
+        finally
         {
             stopwatch.Stop();
-            _logger.LogError($"ERROR in {controllerAction} | User: {username} | Error: {ex.Message}");
-            throw;
-        }
+            var duration = stopwatch.ElapsedMilliseconds;
 
-        stopwatch.Stop();
+            // 1. יצירת אובייקט הלוג (הנתונים שהמורה ביקשה)
+            var logEntry = new LogEntry
+            {
+                StartTime = startTime,
+                HttpMethod = method,
+                Path = path,
+                ControllerAction = controllerAction,
+                StatusCode = statusCode,
+                UserName = username,
+                DurationMs = duration
+            };
 
-        // Queue the log entry for background processing
-        var logEntry = new LogEntry
-        {
-            StartTime = startTime,
-            ControllerAction = $"{method} {controllerAction}",
-            UserName = username,
-            DurationMs = stopwatch.ElapsedMilliseconds
-        };
+            // 2. שליחה לתור האסינכרוני - זה מה שכותב לקובץ בסוף!
+            _logQueue.EnqueueLog(logEntry);
 
-        _logQueue.EnqueueLog(logEntry);
-
-        // Also log based on status code level
-        if (statusCode >= 500)
-        {
-            _logger.LogError(CreateLogMessage(method, path, username, statusCode, stopwatch.ElapsedMilliseconds));
-        }
-        else if (statusCode >= 400)
-        {
-            _logger.LogWarning(CreateLogMessage(method, path, username, statusCode, stopwatch.ElapsedMilliseconds));
-        }
-        else
-        {
-            _logger.LogInformation(CreateLogMessage(method, path, username, statusCode, stopwatch.ElapsedMilliseconds));
         }
     }
 
-    /// <summary>
-    /// Extract controller and action name from the path
-    /// </summary>
-    private string ExtractControllerAction(string path)
+    private string ExtractControllerAction(HttpContext context)
     {
-        // Remove leading slash and split by /
-        var parts = path.Trim('/').Split('/', StringSplitOptions.RemoveEmptyEntries);
-        if (parts.Length >= 2)
+        var routeData = context.GetRouteData();
+        if (routeData?.Values != null && routeData.Values.TryGetValue("controller", out var controller))
         {
-            return $"{parts[0]}/{parts[1]}";
+            routeData.Values.TryGetValue("action", out var action);
+            return $"{controller}/{action}";
         }
-        return path;
+        return context.Request.Path;
     }
 
-    /// <summary>
-    /// Create a formatted log message with full details
-    /// </summary>
-    private string CreateLogMessage(string method, string path, string username, int statusCode, long elapsedMs)
+    private string CreateLogMessage(string method, string path, string user, int status, long ms)
     {
-        return $"ACTION: {method} {path} | " +
-               $"User: {username} | " +
-               $"Status: {statusCode} | " +
-               $"Duration: {elapsedMs}ms";
+        return $"[REQ] {method} {path} | User: {user} | Status: {status} | Duration: {ms}ms";
     }
 }
 
-/// <summary>
-/// Extension methods for adding the middleware to the pipeline
-/// </summary>
 public static partial class MiddlewareExtensions
 {
-    /// <summary>
-    /// Add MyLogMiddleware to the application builder
-    /// </summary>
     public static IApplicationBuilder UseMyLogMiddleware(this IApplicationBuilder builder)
     {
         return builder.UseMiddleware<MyLogMiddleware>();
     }
 }
-

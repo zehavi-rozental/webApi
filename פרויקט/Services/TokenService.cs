@@ -8,8 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
 
-namespace Token.Services
-{
+namespace MyMiddleware.Services;
     public static class TokenService
     {
         private static SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("12345sKyNUyvGbnHs7ke2NCq8zQzNLW7mPmHbnjj"));
@@ -35,4 +34,3 @@ namespace Token.Services
         public static string WriteToken(SecurityToken token) =>
             new JwtSecurityTokenHandler().WriteToken(token);
     }
-}

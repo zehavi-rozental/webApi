@@ -1,4 +1,4 @@
-using IceCreams.Models;
+using MyMiddleware.Models;
 
 namespace ServiceIceCream.interfaces
 {
