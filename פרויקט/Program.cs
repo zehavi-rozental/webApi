@@ -19,8 +19,10 @@ if (!Directory.Exists(logPath))
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
-    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning) // מונע הצפת לוגים של המערכת
-    .WriteTo.Console() // מאפשר לראות את ה-URL והודעות בטרמינל
+    // הגדרה זו מאפשרת לראות את הודעות ה-Listening (הקישורים) בטרמינל
+    .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information) 
+    .WriteTo.Console()
     .WriteTo.File(
         path: Path.Combine(logPath, "app-.txt"),
         rollingInterval: RollingInterval.Day,
@@ -34,11 +36,11 @@ builder.Host.UseSerilog();
 // --- הגדרת CORS ---
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowLocalhost", builder =>
+    options.AddPolicy("AllowLocalhost", policy =>
     {
-        builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader();
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
     });
 });
 
@@ -81,7 +83,7 @@ var app = builder.Build();
 // שימוש ב-Middleware של הלוגים שלך
 app.UseMyLogMiddleware();
 
-// הפעלת CORS
+// הפעלת CORS - חייב להופיע לפני הניתובים
 app.UseCors("AllowLocalhost");
 
 if (app.Environment.IsDevelopment())
