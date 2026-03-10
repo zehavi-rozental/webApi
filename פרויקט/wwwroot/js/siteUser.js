@@ -2,7 +2,7 @@ const uri = '/api/User';
 let users = [];
 
 function authFetch(url, opts = {}) {
-    const token = localStorage.getItem('token');
+    const token = (typeof getToken === 'function' ? getToken() : localStorage.getItem('token'));
     opts.headers = Object.assign({}, opts.headers || {}, token ? { 'Authorization': 'Bearer ' + token } : {});
     return fetch(url, opts).then(response => {
         if (response.status === 401) {

@@ -28,7 +28,39 @@
     </main>
 
     <script>
-        if (localStorage.getItem('token')) {
+        function getPayloadFromToken(token) {
+            const t = token || localStorage.getItem('token');
+            if (!t) return null;
+            const parts = t.split('.');
+            if (parts.length < 2) return null;
+            try {
+                const base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+                return JSON.parse(atob(base64));
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function getToken() {
+            const token = localStorage.getItem('token');
+            if (!token) return null;
+
+            const payload = getPayloadFromToken(token);
+            if (!payload) {
+                localStorage.removeItem('token');
+                return null;
+            }
+
+            const now = Math.floor(Date.now() / 1000);
+            if (payload.exp && now >= payload.exp) {
+                localStorage.removeItem('token');
+                return null;
+            }
+
+            return token;
+        }
+
+        if (getToken()) {
             location.href = 'index.html';
         }
 

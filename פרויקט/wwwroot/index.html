@@ -116,13 +116,32 @@
     </div>
 
     <script>
-        function getToken() { return localStorage.getItem('token'); }
-        function setToken(token) {  localStorage.setItem('token', token); }
-        function removeToken() { localStorage.removeItem('token'); }
-        function getPayloadFromToken() {
-            const token = getToken();
+        function getToken() {
+            const token = localStorage.getItem('token');
             if (!token) return null;
-            const parts = token.split('.');
+
+            const payload = getPayloadFromToken(token);
+            if (!payload) {
+                localStorage.removeItem('token');
+                return null;
+            }
+
+            const now = Math.floor(Date.now() / 1000);
+            if (payload.exp && now >= payload.exp) {
+                localStorage.removeItem('token');
+                return null;
+            }
+
+            return token;
+        }
+
+        function setToken(token) { localStorage.setItem('token', token); }
+        function removeToken() { localStorage.removeItem('token'); }
+
+        function getPayloadFromToken(token) {
+            const t = token || localStorage.getItem('token');
+            if (!t) return null;
+            const parts = t.split('.');
             if (parts.length < 2) return null;
             try {
                 const base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
@@ -132,11 +151,13 @@
                 return null;
             }
         }
+
         function getUserName() {
             const p = getPayloadFromToken();
             if (!p) return null;
             return p.name || p.unique_name || p.username || p.sub || null;
         }
+
         function getUserRole() {
             const p = getPayloadFromToken();
             if (!p) return null;
@@ -181,10 +202,8 @@
             }
 
             function showLogin() {
-                if (inlineLogin) inlineLogin.style.display = 'block';
-                if (protectedEl) protectedEl.style.display = 'none';
-                greetingEl.innerText = '';
-                if (adminLink) adminLink.style.display = 'none';
+                // Redirect to the dedicated login page when not authenticated.
+                location.href = 'login.html';
             }
 
             if (getToken()) {
@@ -193,7 +212,7 @@
                 showLogin();
             }
 
-            // expose login/showLogin for other scripts (used when token expires)
+            // When auth expires, ensure we redirect to the login page
             window.showInlineLogin = showLogin;
 
             // attach login handler (inline form)
