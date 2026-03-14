@@ -48,7 +48,6 @@ C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\rjsmrazor.ds
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\scopedcss\bundle\MyMiddleware.styles.css
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\dbqxbx2svv-2i51u8uma7.gz
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\km1cibjqea-ucwtoan3uu.gz
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\staticwebassets.development.json
@@ -59,7 +58,8 @@ C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\refint\MyMid
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.pdb
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware.genruntimeconfig.cache
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\ref\MyMiddleware.dll
-c:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\vmnfuw2ec1-ovpjceb3u1.gz
 c:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\nvwquj8kzz-vx245967e4.gz
 c:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\0skg9rf76a-buzj5tbjt5.gz
-c:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\wcpd4wdr1e-m6zirsi0hb.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\vmnfuw2ec1-2xqv3irmti.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\km1cibjqea-xlgr0h8gr8.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\wcpd4wdr1e-csmedegz0z.gz

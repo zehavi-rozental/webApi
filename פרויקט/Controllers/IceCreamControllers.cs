@@ -70,17 +70,32 @@ namespace MyMiddleware.Controllers
                 return Unauthorized();
 
             if (id != iceCream.Id)
+            {
+                Console.WriteLine($"[IceCreamController] Update failed: id mismatch. Route id={id}, Body id={iceCream.Id}");
                 return BadRequest();
+            }
 
             var existingIceCream = service.Get(id);
             if (existingIceCream is null)
+            {
+                Console.WriteLine($"[IceCreamController] Update failed: id {id} not found.");
                 return NotFound();
+            }
 
             // Ensure user can only update their own items (unless admin)
             if (user.Role != "Admin" && existingIceCream.UserId != user.Id)
+            {
+                Console.WriteLine($"[IceCreamController] Update forbidden: user {user.Id} tried to update ice cream {id} owned by {existingIceCream.UserId}");
                 return Forbid();
+            }
 
-            service.Update(iceCream);
+            // Log the update attempt
+            Console.WriteLine($"[IceCreamController] Updating ice cream {id}: Name={iceCream.Name}, Milki={iceCream.Milki}");
+
+            // Only update allowed fields
+            existingIceCream.Name = iceCream.Name;
+            existingIceCream.Milki = iceCream.Milki;
+            service.Update(existingIceCream);
             return NoContent();
         }
 

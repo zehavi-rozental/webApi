@@ -8,12 +8,12 @@
     <style>
         /* Toast Notifications */
         .toast {
-            position: absolute;
             padding: 12px 20px;
             border-radius: 4px;
             color: white;
             font-weight: 500;
             opacity: 0;
+            display: none;
             transition: opacity 0.3s ease;
             min-width: 200px;
             text-align: center;
@@ -21,6 +21,7 @@
 
         .toast.show {
             opacity: 1;
+            display: block;
         }
 
         .toast-success {
@@ -58,6 +59,7 @@
         <div id="greeting" style="color:#7a5863;font-weight:500;"></div>
         <div>
             <span id="itemsLink" class="nav-link" onclick="location.href='index.html'">🍦 Items</span>
+            <button id="editProfileBtn" onclick="toggleEditProfile()" style="display:none;padding:8px 16px;background-color:#3b82f6;color:white;border:none;border-radius:4px;cursor:pointer;margin-right:10px;">Edit Profile</button>
             <button id="logoutBtn" onclick="handleLogout()" style="padding:8px 16px;background-color:#dc2626;color:white;border:none;border-radius:4px;cursor:pointer;">Logout</button>
         </div>
     </header>
@@ -74,18 +76,37 @@
     <div id="protectedContent" style="display:none;">
         <h1>User Management👤</h1>
         <h3>Add User</h3>
-        <form id="addForm" action="javascript:void(0);" method="POST" onsubmit="addItem()">
-            <input type="text" id="add-name" placeholder="New user name">
+        <form id="addForm" action="javascript:void(0);" method="POST" onsubmit="addUser()">
+            <input type="text" id="add-name" placeholder="New user name" required>
+            <input type="password" id="add-password" placeholder="Password" required>
+            <select id="add-role" required>
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+            </select>
             <input type="submit" value="Add">
         </form>
 
         <div id="editForm">
             <h3>Edit User</h3>
-            <form action="javascript:void(0);" onsubmit="updateItem()">
+            <form action="javascript:void(0);" onsubmit="updateUser()">
                 <input type="hidden" id="edit-id">
-                <input type="text" id="edit-name" placeholder="User name">
+                <input type="text" id="edit-name" placeholder="User name" required>
+                <input type="password" id="edit-password" placeholder="Password" required>
+                <select id="edit-role" required>
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
                 <input type="submit" value="Save">
                 <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+            </form>
+        </div>
+
+        <div id="editProfileSection" style="display:none;">
+            <h3>Edit Profile</h3>
+            <form id="editProfileForm" action="javascript:void(0);" onsubmit="updateProfile()">
+                <input type="text" id="profile-name" placeholder="Your name" required>
+                <input type="password" id="profile-password" placeholder="New password">
+                <input type="submit" value="Save">
             </form>
         </div>
 
@@ -94,6 +115,7 @@
         <table>
             <tr>
                 <th>Name</th>
+                <th>Role</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -221,10 +243,14 @@
 
         function addUser() {
             const addNameInput = document.getElementById('add-name');
+            const addPasswordInput = document.getElementById('add-password');
+            const addRoleSelect = document.getElementById('add-role');
             const name = addNameInput.value.trim();
+            const password = addPasswordInput.value.trim();
+            const role = addRoleSelect.value;
 
-            if (!name) {
-                showToast('Please enter a user name', 'warning');
+            if (!name || !password) {
+                showToast('Please enter name and password', 'warning');
                 return;
             }
 
@@ -234,7 +260,7 @@
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ Name: name })
+                body: JSON.stringify({ Name: name, Password: password, Role: role })
             })
                 .then(response => {
                     if (response.ok) {
@@ -271,14 +297,12 @@
                 });
         }
 
-        function displayEditForm(id) {
-            const user = users.find(u => u.id === id);
-            if (!user) {
-                showToast('User not found', 'error');
-                return;
-            }
+        function displayEditUserForm(userJson) {
+            const user = JSON.parse(userJson);
 
             document.getElementById('edit-name').value = user.name;
+            document.getElementById('edit-password').value = user.password || '';
+            document.getElementById('edit-role').value = user.role || 'User';
             document.getElementById('edit-id').value = user.id;
             document.getElementById('editForm').style.display = 'block';
         }
@@ -286,9 +310,11 @@
         function updateUser() {
             const userId = document.getElementById('edit-id').value;
             const name = document.getElementById('edit-name').value.trim();
+            const password = document.getElementById('edit-password').value.trim();
+            const role = document.getElementById('edit-role').value;
 
-            if (!name) {
-                showToast('Name cannot be empty', 'warning');
+            if (!name || !password) {
+                showToast('Name and password cannot be empty', 'warning');
                 return false;
             }
 
@@ -298,7 +324,7 @@
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id: parseInt(userId), name: name })
+                body: JSON.stringify({ id: parseInt(userId), name: name, password: password, role: role })
             })
                 .then(response => {
                     if (response.ok) {
@@ -337,7 +363,7 @@
             data.forEach(user => {
                 let editButton = button.cloneNode(false);
                 editButton.innerText = 'Edit';
-                editButton.setAttribute('onclick', `displayEditForm(${user.id})`);
+                editButton.setAttribute('onclick', `displayEditUserForm('${JSON.stringify(user).replace(/'/g, "\\'")}')`);
 
                 let deleteButton = button.cloneNode(false);
                 deleteButton.innerText = 'Delete';
@@ -349,13 +375,63 @@
                 td1.appendChild(document.createTextNode(user.name));
 
                 let td2 = tr.insertCell(1);
-                td2.appendChild(editButton);
+                td2.appendChild(document.createTextNode(user.role || 'User'));
 
                 let td3 = tr.insertCell(2);
-                td3.appendChild(deleteButton);
+                td3.appendChild(editButton);
+
+                let td4 = tr.insertCell(3);
+                td4.appendChild(deleteButton);
             });
 
             users = data;
+        }
+
+        // ===== Edit Profile Functions =====
+        function toggleEditProfile() {
+            const editProfileSection = document.getElementById('editProfileSection');
+            if (editProfileSection.style.display === 'none' || editProfileSection.style.display === '') {
+                editProfileSection.style.display = 'block';
+                document.getElementById('profile-name').value = getUserName() || '';
+            } else {
+                editProfileSection.style.display = 'none';
+            }
+        }
+
+        function updateProfile() {
+            const name = document.getElementById('profile-name').value.trim();
+            const password = document.getElementById('profile-password').value;
+
+            if (!name) {
+                showToast('Name cannot be empty', 'warning');
+                return;
+            }
+
+            const payload = { name };
+            if (password) {
+                payload.password = password;
+            }
+
+            authFetch(`${userApiUri}/profile`, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        showToast('Profile updated successfully!', 'success');
+                        document.getElementById('editProfileSection').style.display = 'none';
+                    } else {
+                        return Promise.reject('Update failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Unable to update profile.', error);
+                    showToast('Failed to update profile', 'error');
+                });
         }
 
         // ===== DOM Ready =====
@@ -364,67 +440,28 @@
             const protectedEl = document.getElementById('protectedContent');
             const inlineLogin = document.getElementById('inlineLogin');
 
-            function showProtected() {
-                // Check if user is admin
-                const userRole = getUserRole();
-                console.log('User role in user.html:', userRole, 'Type:', typeof userRole);
-                
-                if (!userRole || (userRole !== 'Admin' && userRole.toLowerCase() !== 'admin')) {
-                    showToast('You do not have permission to view this page', 'error');
-                    setTimeout(() => {
-                        location.href = 'index.html';
-                    }, 2000);
-                    return;
-                }
+            // Always show Edit Profile button for any authenticated user
+            const userRole = getUserRole();
+            console.log('User role in user.html:', userRole, 'Type:', typeof userRole);
+            document.getElementById('editProfileBtn').style.display = 'inline-block';
+            if (greetingEl) greetingEl.innerText = `Welcome, ${getUserName()}!`;
 
-                if (inlineLogin) inlineLogin.style.display = 'none';
+            // Admins see user management, others see only profile
+            if (userRole === 'Admin' || userRole === 'admin') {
                 if (protectedEl) protectedEl.style.display = 'block';
-                if (greetingEl) greetingEl.innerText = `Welcome, ${getUserName()}!`;
-
-                if (getToken()) {
-                    getUsers();
-                }
+                document.getElementById('editProfileSection').style.display = 'none';
+                if (getToken()) getUsers();
+            } else {
+                if (protectedEl) protectedEl.style.display = 'none';
+                document.getElementById('editProfileSection').style.display = 'none';
             }
 
-            function showLogin() {
-                // If the user is not authenticated, redirect to the dedicated login page.
+            // Attach toggle handler
+            document.getElementById('editProfileBtn').addEventListener('click', toggleEditProfile);
+
+            if (!getToken()) {
                 location.href = 'login.html';
             }
-
-            if (getToken()) {
-                showProtected();
-            } else {
-                showLogin();
-            }
-
-            // Ensure any token expiration redirects to the login page
-            window.showInlineLogin = showLogin;
-
-            window.handleInlineLogin = async function (e) {
-                e.preventDefault();
-                const user = document.getElementById('inline-username').value.trim();
-                const pass = document.getElementById('inline-password').value.trim();
-                const err = document.getElementById('inline-error');
-                if (err) err.style.display = 'none';
-                try {
-                    const res = await fetch('/api/login', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ Username: user, Password: pass })
-                    });
-                    if (res.ok) {
-                        const token = await res.text();
-                        setToken(token);
-                        location.reload();
-                    } else if (res.status === 401) {
-                        if (err) { err.innerText = 'Invalid username or password.'; err.style.display = 'block'; }
-                    } else {
-                        if (err) { err.innerText = 'Error, please try again.'; err.style.display = 'block'; }
-                    }
-                } catch (e) {
-                    if (err) { err.innerText = 'Network error.'; err.style.display = 'block'; }
-                }
-            };
         });
     </script>
     <script src="js/siteUser.js" asp-append-version="true"></script>

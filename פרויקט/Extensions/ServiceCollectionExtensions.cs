@@ -3,6 +3,7 @@ using MyMiddleware.Services;
 using MyMiddleware.Interfaces;
 using MyMiddleware.BackgroundServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.SignalR;
 
 namespace MyMiddleware.Extensions
 {
@@ -25,6 +26,7 @@ namespace MyMiddleware.Extensions
 
             // SignalR
             services.AddSignalR();
+            services.AddSingleton<Microsoft.AspNetCore.SignalR.IUserIdProvider, UserIdProvider>();
 
             // שירות משתמש פעיל (Scoped כדי לספק מידע על משתמש הנוכחי)
             services.AddScoped<IActiveUser, ActiveUserService>();
@@ -40,6 +42,14 @@ namespace MyMiddleware.Extensions
             services.AddHostedService<BackgroundLogWorker>();
 
             return services;
+        }
+    }
+
+    public class UserIdProvider : IUserIdProvider
+    {
+        public string? GetUserId(HubConnectionContext connection)
+        {
+            return connection.User?.FindFirst("userId")?.Value;
         }
     }
 }

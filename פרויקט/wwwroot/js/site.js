@@ -1,4 +1,5 @@
 const uri = '/api/IceCream';
+const userApiUri = '/api/User';
 let iceCreams = [];
 let signalRConnection = null;
 
@@ -76,9 +77,9 @@ function getUserRole() {
     return p.role || p['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] || null;
 }
 
-function isAdmin() {
-    const role = getUserRole();
-    return role && (role === 'Admin' || role.toLowerCase() === 'admin');
+function getUserId() {
+    const p = getPayloadFromToken();
+    return p?.userId || p?.sub;
 }
 
 // ===== Authenticated Fetch =====
@@ -133,9 +134,9 @@ function addItem() {
     })
         .then(response => {
             if (response.ok) {
-                showToast('Ice cream added! Waiting for confirmation...', 'success');
+                showToast('Ice cream added successfully!', 'success');
                 addNameTextbox.value = '';
-                getItems();
+                // Grid will update when SignalR notifies
             } else {
                 return response.status === 401 ? Promise.reject('Unauthorized') : Promise.reject('Add failed');
             }
@@ -155,7 +156,7 @@ function deleteItem(id) {
     })
         .then(response => {
             if (response.ok) {
-                showToast('Ice cream deleted! Waiting for confirmation...', 'success');
+                showToast('Ice cream deleted successfully!', 'success');
                 // Grid will update when SignalR notifies
             } else {
                 return Promise.reject('Delete failed');
@@ -167,13 +168,12 @@ function deleteItem(id) {
         });
 }
 
-function displayEditForm(id) {
+function displayEditIceCreamForm(id) {
     const item = iceCreams.find(item => item.id === id);
     if (!item) {
         showToast('Item not found', 'error');
         return;
     }
-
     document.getElementById('edit-name').value = item.name;
     document.getElementById('edit-id').value = item.id;
     document.getElementById('edit-milki').checked = item.Milki || item.milki || false;
@@ -182,16 +182,31 @@ function displayEditForm(id) {
 
 function updateItem() {
     const itemId = document.getElementById('edit-id').value;
-    const item = {
-        Id: parseInt(itemId, 10),
-        Name: document.getElementById('edit-name').value.trim(),
-        Milki: document.getElementById('edit-milki').checked
-    };
+    const name = document.getElementById('edit-name').value.trim();
+    const milki = document.getElementById('edit-milki').checked;
 
-    if (!item.Name) {
+    if (!itemId) {
+        showToast('No item selected for update', 'error');
+        return false;
+    }
+    if (!name) {
         showToast('Name cannot be empty', 'warning');
         return false;
     }
+
+    // Find the original item
+    const original = iceCreams.find(item => item.id == itemId);
+    if (!original) {
+        showToast('Original item not found', 'error');
+        return false;
+    }
+
+    // Only send changed fields (defensive, but not required)
+    const item = {
+        Id: parseInt(itemId, 10),
+        Name: name,
+        Milki: milki
+    };
 
     authFetch(`${uri}/${itemId}`, {
         method: 'PUT',
@@ -203,18 +218,20 @@ function updateItem() {
     })
         .then(response => {
             if (response.ok) {
-                showToast('Ice cream updated! Waiting for confirmation...', 'success');
+                showToast('Ice cream updated successfully!', 'success');
                 closeInput();
-                getItems();
+            } else if (response.status === 403) {
+                showToast('You are not allowed to edit this item', 'error');
+            } else if (response.status === 404) {
+                showToast('Item not found', 'error');
             } else {
-                return Promise.reject('Update failed');
+                showToast('Failed to update ice cream', 'error');
             }
         })
         .catch(error => {
             console.error('Unable to update item.', error);
             showToast('Failed to update ice cream', 'error');
         });
-
     return false;
 }
 
@@ -244,7 +261,7 @@ function _displayItems(data) {
 
         let editButton = button.cloneNode(false);
         editButton.innerText = 'Edit';
-        editButton.setAttribute('onclick', `displayEditForm(${item.id})`);
+        editButton.setAttribute('onclick', `displayEditIceCreamForm(${item.id})`);
 
         let deleteButton = button.cloneNode(false);
         deleteButton.innerText = 'Delete';
@@ -316,6 +333,48 @@ function initSignalR() {
         .catch(err => {
             console.error("SignalR connection error:", err);
             showToast('Failed to connect to real-time updates', 'warning');
+        });
+}
+
+// ===== Toggle Profile Form =====
+function toggleProfileForm() {
+    const form = document.getElementById('profileForm');
+    form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+}
+
+// ===== Update Profile =====
+function updateProfile() {
+    const name = document.getElementById('profile-name').value.trim();
+    const password = document.getElementById('profile-password').value;
+
+    if (!name) {
+        showToast('Name cannot be empty', 'warning');
+        return;
+    }
+
+    const payload = { name };
+    if (password) {
+        payload.password = password;
+    }
+
+    authFetch(`${userApiUri}/profile`, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+        .then(response => {
+            if (response.ok) {
+                showToast('Profile updated successfully!', 'success');
+            } else {
+                return Promise.reject('Update failed');
+            }
+        })
+        .catch(error => {
+            console.error('Unable to update profile.', error);
+            showToast('Failed to update profile', 'error');
         });
 }
 

@@ -89,7 +89,7 @@ public class IceCreamService : GenericJsonService<IceCream>, IIIceCreams
 
     public override void Update(IceCream item)
     {
-        item.UserId = GetCurrentUserId(); // Ensure user can only update their own items
+        // Do not change UserId here, as it should remain the same
         base.Update(item);
         BroadcastActivityToUser("updated", item.Name);
     }
@@ -111,7 +111,7 @@ public class IceCreamService : GenericJsonService<IceCream>, IIIceCreams
         if (user != null)
         {
             // Only notify the current user's connections
-            hubContext.Clients.All.SendAsync("ReceiveActivity", user.Username, action, itemName);
+            hubContext.Clients.User(user.Id).SendAsync("ReceiveActivity", user.Username, action, itemName);
         }
     }
 }

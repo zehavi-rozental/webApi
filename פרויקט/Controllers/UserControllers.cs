@@ -109,8 +109,44 @@ namespace MyMiddleware.Controllers
             if (User.IsInRole("Admin") == false && currentUserId != id.ToString())
                 return Forbid();
 
+            // Regular users cannot change their role or other users' roles
+            if (User.IsInRole("Admin") == false)
+            {
+                // Prevent regular users from changing role
+                user.Role = existingUser.Role;
+            }
+            // Admins can change everything, including role
+
+            // If password is empty, keep the existing one
+            if (string.IsNullOrEmpty(user.Password))
+            {
+                user.Password = existingUser.Password;
+            }
+
             userService.Update(user);
             return NoContent();
+        }
+
+        [HttpPut("profile")]
+        [Authorize]
+        public IActionResult UpdateProfile([FromBody] User user)
+        {
+            var username = User.Identity?.Name;
+            if (string.IsNullOrEmpty(username))
+                return Unauthorized();
+            var users = userService.GetAll();
+            var existingUser = users.FirstOrDefault(u => u.Name == username);
+            if (existingUser == null)
+                return NotFound();
+
+            // Only allow updating name and password
+            if (!string.IsNullOrWhiteSpace(user.Name))
+                existingUser.Name = user.Name;
+            if (!string.IsNullOrWhiteSpace(user.Password))
+                existingUser.Password = user.Password;
+
+            userService.Update(existingUser);
+            return Ok();
         }
 
         [HttpDelete("{id}")]
