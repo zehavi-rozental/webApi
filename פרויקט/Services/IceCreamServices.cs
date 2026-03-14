@@ -72,7 +72,6 @@ public class IceCreamService : GenericJsonService<IceCream>, IIIceCreams
 
     public override void Add(IceCream item)
     {
-        item.UserId = GetCurrentUserId(); // Set the current user as owner
         base.Add(item);
         BroadcastActivityToUser("added", item.Name);
     }

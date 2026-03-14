@@ -52,11 +52,19 @@ namespace MyMiddleware.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(IceCream iceCream)
+        public IActionResult Create([FromBody] IceCream iceCreamInput)
         {
             var user = activeUser.ActiveUser;
             if (user == null)
                 return Unauthorized();
+
+            // Create new IceCream with UserId set during initialization
+            var iceCream = new IceCream
+            {
+                Name = iceCreamInput.Name,
+                Milki = iceCreamInput.Milki,
+                UserId = user.Id
+            };
 
             service.Add(iceCream);
             return CreatedAtAction(nameof(Get), new { id = iceCream.Id }, iceCream);
