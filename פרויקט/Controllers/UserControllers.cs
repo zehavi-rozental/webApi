@@ -8,6 +8,7 @@ using MyMiddleware.Models;
 using MyMiddleware.Services;
 using ServiceUsers.interfaces;
 using ServiceIceCream.interfaces;
+using Shared.Interfaces;
 
 namespace MyMiddleware.Controllers
 {
@@ -17,11 +18,13 @@ namespace MyMiddleware.Controllers
     {
         private readonly IIUsers userService;
         private readonly IIIceCreams iceCreamService;
+        private readonly IActiveUser activeUserService;
 
-        public UserController(IIUsers userService, IIIceCreams iceCreamService)
+        public UserController(IIUsers userService, IIIceCreams iceCreamService, IActiveUser activeUserService)
         {
             this.userService = userService;
             this.iceCreamService = iceCreamService;
+            this.activeUserService = activeUserService;
         }
 
         [HttpPost]
@@ -129,21 +132,24 @@ namespace MyMiddleware.Controllers
 
         [HttpPut("profile")]
         [Authorize]
-        public IActionResult UpdateProfile([FromBody] User user)
+        public IActionResult UpdateProfile([FromBody] UserUpdateDto userUpdateDto)
         {
-            var username = User.Identity?.Name;
-            if (string.IsNullOrEmpty(username))
+            var activeUser = activeUserService.ActiveUser;
+            if (activeUser == null)
                 return Unauthorized();
-            var users = userService.GetAll();
-            var existingUser = users.FirstOrDefault(u => u.Name == username);
+
+            if (!int.TryParse(activeUser.Id, out var userId))
+                return BadRequest("Invalid user ID");
+
+            var existingUser = userService.Get(userId);
             if (existingUser == null)
                 return NotFound();
 
             // Only allow updating name and password
-            if (!string.IsNullOrWhiteSpace(user.Name))
-                existingUser.Name = user.Name;
-            if (!string.IsNullOrWhiteSpace(user.Password))
-                existingUser.Password = user.Password;
+            if (!string.IsNullOrWhiteSpace(userUpdateDto.Name))
+                existingUser.Name = userUpdateDto.Name;
+            if (!string.IsNullOrWhiteSpace(userUpdateDto.Password))
+                existingUser.Password = userUpdateDto.Password;
 
             userService.Update(existingUser);
             return Ok();
