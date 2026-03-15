@@ -22,6 +22,19 @@ namespace MyMiddleware.Extensions
                 .AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters = TokenService.GetTokenValidationParameters();
+                    // SignalR JWT configuration - read token from query string for negotiation
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            var accessToken = context.Request.Query["access_token"];
+                            if (!string.IsNullOrEmpty(accessToken))
+                            {
+                                context.Token = accessToken;
+                            }
+                            return Task.CompletedTask;
+                        }
+                    };
                 });
 
             // SignalR

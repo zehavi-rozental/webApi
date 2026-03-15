@@ -49,9 +49,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost", policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins("http://localhost:5000", "https://localhost:5001", "http://127.0.0.1:5000", "https://127.0.0.1:5001")
               .AllowAnyMethod()
-              .AllowAnyHeader();
+              .AllowAnyHeader()
+              .AllowCredentials();
     });
 });
 
@@ -90,21 +91,23 @@ var app = builder.Build();
 
 // --- 3. הגדרת Pipeline (סדר ה-Middleware) ---
 
-// א. המידלוור שלך ראשון - כדי שיוכל למדוד זמן (Duration) של כל הצינור
-app.UseMyLogMiddleware();
+// --- 3. הגדרת Pipeline (סדר ה-Middleware) ---
 
-// ב. אבטחה וגישה
+// א. אבטחה וגישה
 app.UseCors("AllowLocalhost");
 app.UseHttpsRedirection();
 
-// ג. קבצים סטטיים (חשוב שיופיעו לפני ה-Routing)
+// ב. קבצים סטטיים (חשוב שיופיעו לפני ה-Routing)
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
-// ד. ניתוב ואבטחה (Authentication חייב לבוא לפני Authorization)
+// ג. ניתוב ואבטחה (Authentication חייב לבוא לפני Authorization)
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
+// ד. המידלוור שלך - אחרי Authentication כדי שיהיה לו גישה ל-User
+app.UseMyLogMiddleware();
 
 if (app.Environment.IsDevelopment())
 {

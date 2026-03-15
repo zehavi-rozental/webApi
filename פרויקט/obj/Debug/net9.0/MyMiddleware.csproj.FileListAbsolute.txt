@@ -60,6 +60,6 @@ C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\MyMiddleware
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\ref\MyMiddleware.dll
 c:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\nvwquj8kzz-vx245967e4.gz
 c:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\0skg9rf76a-buzj5tbjt5.gz
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\vmnfuw2ec1-2xqv3irmti.gz
-C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\km1cibjqea-xlgr0h8gr8.gz
 C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\wcpd4wdr1e-csmedegz0z.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\vmnfuw2ec1-zjte28027a.gz
+C:\Users\user\Documents\GitHub\webApi\פרויקט\obj\Debug\net9.0\compressed\km1cibjqea-i6omhgem4u.gz

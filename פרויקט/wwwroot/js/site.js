@@ -134,7 +134,6 @@ function addItem() {
     })
         .then(response => {
             if (response.ok) {
-                showToast('Ice cream added successfully!', 'success');
                 addNameTextbox.value = '';
                 // Grid will update when SignalR notifies
             } else {
@@ -156,7 +155,6 @@ function deleteItem(id) {
     })
         .then(response => {
             if (response.ok) {
-                showToast('Ice cream deleted successfully!', 'success');
                 // Grid will update when SignalR notifies
             } else {
                 return Promise.reject('Delete failed');
@@ -218,7 +216,6 @@ function updateItem() {
     })
         .then(response => {
             if (response.ok) {
-                showToast('Ice cream updated successfully!', 'success');
                 closeInput();
             } else if (response.status === 403) {
                 showToast('You are not allowed to edit this item', 'error');
@@ -289,31 +286,39 @@ function _displayItems(data) {
 // ===== SignalR Integration =====
 function initSignalR() {
     signalRConnection = new signalR.HubConnectionBuilder()
-        .withUrl("/activityHub")
+        .withUrl("/activityHub", {
+            accessTokenFactory: () => getToken()
+        })
         .withAutomaticReconnect()
         .build();
 
-    // Receive activity notifications
+    // Receive activity notifications and update grid
     signalRConnection.on("ReceiveActivity", function (data) {
         if (!data) return;
         
-        const username = data.username || data; // Handle both object and string formats
-        const action = data.action || 'activity';
-        const itemName = data.itemName || '';
+        // Show toast notification for the activity
+        const username = data.username || 'Someone';
+        const action = data.action || 'performed action';
+        const itemName = data.itemName || 'item';
         
-        const activityList = document.getElementById("activityList");
-        if (activityList) {
-            const li = document.createElement("li");
-            li.textContent = `${username} ${action} '${itemName}'`;
-            activityList.insertBefore(li, activityList.firstChild);
-
-            // Keep list short
-            while (activityList.children.length > 10) {
-                activityList.removeChild(activityList.lastChild);
-            }
+        let message = '';
+        switch (action) {
+            case 'added':
+                message = `Ice cream '${itemName}' was added`;
+                break;
+            case 'updated':
+                message = `Ice cream '${itemName}' was updated`;
+                break;
+            case 'deleted':
+                message = `Ice cream '${itemName}' was deleted`;
+                break;
+            default:
+                message = `${username} ${action} '${itemName}'`;
         }
-
-        // Refresh the grid when activity is received
+        
+        showToast(message, 'info');
+        
+        // Update the grid with latest data from server
         getItems();
     });
 

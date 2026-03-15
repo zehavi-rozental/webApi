@@ -110,7 +110,7 @@ public class IceCreamService : GenericJsonService<IceCream>, IIIceCreams
         if (user != null)
         {
             // Only notify the current user's connections
-            hubContext.Clients.User(user.Id).SendAsync("ReceiveActivity", user.Username, action, itemName);
+            hubContext.Clients.User(user.Id).SendAsync("ReceiveActivity", new { username = user.Username, action, itemName });
         }
     }
 }
