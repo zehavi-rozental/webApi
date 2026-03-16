@@ -1,4 +1,23 @@
+## Ignore build outputs
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+.vs/
+
+# IDE folders
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Node modules if any
+node_modules/
 # Build and compilation
+
 bin/
 obj/
 *.dll
