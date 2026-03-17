@@ -3,408 +3,163 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Users - Ice Cream Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>👥 User Management - Admin</title>
     <link rel="stylesheet" href="css/site.css" />
-    <style>
-        /* Toast Notifications */
-        .toast {
-            padding: 12px 20px;
-            border-radius: 4px;
-            color: white;
-            font-weight: 500;
-            opacity: 0;
-            display: none;
-            transition: opacity 0.3s ease;
-            min-width: 200px;
-            text-align: center;
-        }
-
-        .toast.show {
-            opacity: 1;
-            display: block;
-        }
-
-        .toast-success {
-            background-color: #10b981;
-        }
-
-        .toast-error {
-            background-color: #ef4444;
-        }
-
-        .toast-warning {
-            background-color: #f59e0b;
-        }
-
-        .toast-info {
-            background-color: #3b82f6;
-        }
-
-        .nav-link {
-            cursor: pointer;
-            color: #7a5863;
-            font-weight: 500;
-            text-decoration: underline;
-            margin-right: 20px;
-        }
-
-        .nav-link:hover {
-            color: #5a4863;
-        }
-    </style>
 </head>
 
 <body>
-    <header style="max-width:820px;margin:0 auto 1rem;display:flex;justify-content:space-between;align-items:center;">
-        <div id="greeting" style="color:#7a5863;font-weight:500;"></div>
-        <div>
+    <!-- Header Navigation -->
+    <header>
+        <div id="greeting" class="greeting"></div>
+        <nav class="nav-menu">
             <span id="itemsLink" class="nav-link" onclick="location.href='index.html'">🍦 Items</span>
-            <button id="editProfileBtn" onclick="toggleEditProfile()" style="display:none;padding:8px 16px;background-color:#3b82f6;color:white;border:none;border-radius:4px;cursor:pointer;margin-right:10px;">Edit Profile</button>
-            <button id="logoutBtn" onclick="handleLogout()" style="padding:8px 16px;background-color:#dc2626;color:white;border:none;border-radius:4px;cursor:pointer;">Logout</button>
-        </div>
+            <button id="editProfileBtn" onclick="toggleEditProfile()" class="btn btn-secondary hidden">✏️ Edit Profile</button>
+            <button id="logoutBtn" onclick="handleLogout()" class="btn btn-danger">Logout</button>
+        </nav>
     </header>
 
-    <div id="inlineLogin" class="login-card" style="max-width:520px;margin:1rem auto;display:none;">
+    <!-- Inline Login Form (shown when token expires) -->
+    <div id="inlineLogin" class="login-card card hidden" dir="rtl">
         <form id="inlineLoginForm" action="javascript:void(0);" onsubmit="handleInlineLogin(event)">
-            <input id="inline-username" type="text" placeholder="שם משתמש" required />
-            <input id="inline-password" type="password" placeholder="סיסמה" required />
+            <h3>📥 התחברות מחדש</h3>
+            <input id="inline-username" 
+                   type="text" 
+                   placeholder="שם משתמש" 
+                   class="input-field"
+                   required />
+            <input id="inline-password" 
+                   type="password" 
+                   placeholder="סיסמה" 
+                   class="input-field"
+                   required />
             <input class="login-submit" type="submit" value="התחבר" />
-            <p id="inline-error" style="color:#b91c1c;margin-top:0.5rem;display:none"></p>
+            <p id="inline-error" class="error-message"></p>
         </form>
     </div>
 
-    <div id="protectedContent" style="display:none;">
-        <h1>User Management👤</h1>
-        <h3>Add User</h3>
-        <form id="addForm" action="javascript:void(0);" method="POST" onsubmit="addUser()">
-            <input type="text" id="add-name" placeholder="New user name" required>
-            <input type="password" id="add-password" placeholder="Password" required>
-            <select id="add-role" required>
-                <option value="User">User</option>
-                <option value="Admin">Admin</option>
-            </select>
-            <input type="submit" value="Add">
-        </form>
+    <!-- Protected Content (Admin Functions) -->
+    <div id="protectedContent" class="protected-content hidden">
+        <h1>👥 User Management</h1>
 
-        <div id="editForm">
-            <h3>Edit User</h3>
-            <form action="javascript:void(0);" onsubmit="updateUser()">
-                <input type="hidden" id="edit-id">
-                <input type="text" id="edit-name" placeholder="User name" required>
-                <input type="password" id="edit-password" placeholder="Password" required>
-                <select id="edit-role" required>
-                    <option value="User">User</option>
-                    <option value="Admin">Admin</option>
+        <!-- Add New User Form -->
+        <section>
+            <h3>➕ Add New User</h3>
+            <form id="addForm" action="javascript:void(0);" method="POST" onsubmit="addItem(); return false;" class="form-section">
+                <input type="text" 
+                       id="add-name" 
+                       placeholder="New user name" 
+                       class="input-field"
+                       required>
+                <input type="password" 
+                       id="add-password" 
+                       placeholder="Password" 
+                       class="input-field"
+                       required>
+                <select id="add-role" class="input-field" required>
+                    <option value="User">👤 User</option>
+                    <option value="Admin">⚙️ Admin</option>
                 </select>
-                <input type="submit" value="Save">
-                <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+                <input type="submit" value="Add User" class="btn btn-primary">
+            </form>
+        </section>
+
+        <!-- Edit User Form (hidden by default) -->
+        <div id="editForm" class="form-section hidden">
+            <h3>✏️ Edit User</h3>
+            <form action="javascript:void(0);" onsubmit="updateItem(); return false;">
+                <input type="hidden" id="edit-id">
+                <input type="text" 
+                       id="edit-name" 
+                       placeholder="User name" 
+                       class="input-field"
+                       required>
+                <input type="password" 
+                       id="edit-password" 
+                       placeholder="Password" 
+                       class="input-field"
+                       required>
+                <select id="edit-role" class="input-field" required>
+                    <option value="User">👤 User</option>
+                    <option value="Admin">⚙️ Admin</option>
+                </select>
+                <div class="form-actions">
+                    <input type="submit" value="Save" class="btn btn-primary">
+                    <a onclick="closeInput()" 
+                       class="btn btn-ghost" 
+                       aria-label="Close Edit">Cancel</a>
+                </div>
             </form>
         </div>
 
-        <div id="editProfileSection" style="display:none;">
-            <h3>Edit Profile</h3>
-            <form id="editProfileForm" action="javascript:void(0);" onsubmit="updateProfile()">
-                <input type="text" id="profile-name" placeholder="Your name" required>
-                <input type="password" id="profile-password" placeholder="New password">
-                <input type="submit" value="Save">
+        <!-- Edit Profile Form (shown only for non-admins) -->
+        <div id="editProfileSection" class="form-section hidden">
+            <h3>👤 Edit Your Profile</h3>
+            <form id="editProfileForm" action="javascript:void(0);" onsubmit="updateProfile(); return false;">
+                <input type="text" 
+                       id="profile-name" 
+                       placeholder="Your name" 
+                       class="input-field"
+                       required>
+                <input type="password" 
+                       id="profile-password" 
+                       placeholder="New password (optional)" 
+                       class="input-field">
+                <input type="submit" value="Save" class="btn btn-primary">
             </form>
         </div>
 
-        <p id="counter"></p>
+        <!-- User Count -->
+        <div id="counterSection" class="info-box">
+            <p id="counter"></p>
+        </div>
 
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Role</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tbody id="users"></tbody>
-        </table>
+        <!-- Users Table -->
+        <section class="table-section">
+            <h3>📋 All Users</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users"></tbody>
+                </table>
+            </div>
+        </section>
     </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
+    <!-- Load shared utilities first -->
+    <script src="js/site.js" asp-append-version="true"></script>
+    
+    <!-- Load user management functions -->
+    <script src="js/siteUser.js" asp-append-version="true"></script>
 
     <script>
-        const userApiUri = '/api/User';
-        let users = [];
-
-        function getToken() {
-            const token = localStorage.getItem('token');
-            if (!token) return null;
-
-            const payload = getPayloadFromToken(token);
-            if (!payload) {
-                localStorage.removeItem('token');
-                return null;
-            }
-
-            const now = Math.floor(Date.now() / 1000);
-            if (payload.exp && now >= payload.exp) {
-                localStorage.removeItem('token');
-                return null;
-            }
-
-            return token;
-        }
-
-        function setToken(token) { localStorage.setItem('token', token); }
-        function removeToken() { localStorage.removeItem('token'); }
-
-        function getPayloadFromToken(token) {
-            const t = token || localStorage.getItem('token');
-            if (!t) return null;
-            const parts = t.split('.');
-            if (parts.length < 2) return null;
-            try {
-                const base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
-                return JSON.parse(atob(base64));
-            } catch (e) { return null; }
-        }
-
-        function getUserName() { 
-            const p = getPayloadFromToken(); 
-            if (!p) return null; 
-            return p.name || p.unique_name || p.username || p.sub || null; 
-        }
-
-        function getUserRole() {
-            const p = getPayloadFromToken();
-            if (!p) return null;
-            return p.role || p['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] || null;
-        }
-
-        function handleLogout() {
-            removeToken();
-            location.href = 'login.html';
-        }
-
-        // ===== Toast Notifications =====
-        function showToast(message, type = 'info', duration = 3000) {
-            const container = document.getElementById('toastContainer') || createToastContainer();
-            const toast = document.createElement('div');
-            toast.className = `toast toast-${type}`;
-            toast.textContent = message;
-            toast.setAttribute('role', 'status');
-            container.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.classList.add('show');
-            }, 10);
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => container.removeChild(toast), 300);
-            }, duration);
-        }
-
-        function createToastContainer() {
-            const container = document.createElement('div');
-            container.id = 'toastContainer';
-            container.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                z-index: 9999;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            `;
-            document.body.appendChild(container);
-            return container;
-        }
-
-        // ===== Authenticated Fetch =====
-        function authFetch(url, opts = {}) {
-            const token = localStorage.getItem('token');
-            opts.headers = Object.assign({}, opts.headers || {}, token ? { 'Authorization': 'Bearer ' + token } : {});
-            return fetch(url, opts).then(response => {
-                if (response.status === 401) {
-                    localStorage.removeItem('token');
-                    if (window.showInlineLogin) {
-                        try { window.showInlineLogin(); } catch (e) { }
-                    } else {
-                        location.href = 'login.html';
-                    }
-                    throw new Error('Unauthorized');
-                }
-                return response;
-            });
-        }
-
-        // ===== CRUD Operations =====
-        function getUsers() {
-            authFetch(userApiUri)
-                .then(response => response.json())
-                .then(data => displayUsers(data))
-                .catch(error => {
-                    console.error('Unable to get users.', error);
-                    showToast('Failed to load users', 'error');
-                });
-        }
-
-        function addUser() {
-            const addNameInput = document.getElementById('add-name');
-            const addPasswordInput = document.getElementById('add-password');
-            const addRoleSelect = document.getElementById('add-role');
-            const name = addNameInput.value.trim();
-            const password = addPasswordInput.value.trim();
-            const role = addRoleSelect.value;
-
-            if (!name || !password) {
-                showToast('Please enter name and password', 'warning');
-                return;
-            }
-
-            authFetch(userApiUri, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ Name: name, Password: password, Role: role })
-            })
-                .then(response => {
-                    if (response.ok) {
-                        showToast('User added successfully!', 'success');
-                        addNameInput.value = '';
-                        getUsers();
-                    } else {
-                        return Promise.reject('Add failed');
-                    }
-                })
-                .catch(error => {
-                    console.error('Unable to add user.', error);
-                    showToast('Failed to add user', 'error');
-                });
-        }
-
-        function deleteUser(id) {
-            if (!confirm('Are you sure? This will also delete all their items.')) return;
-
-            authFetch(`${userApiUri}/${id}`, {
-                method: 'DELETE'
-            })
-                .then(response => {
-                    if (response.ok) {
-                        showToast('User deleted successfully!', 'success');
-                        getUsers();
-                    } else {
-                        return Promise.reject('Delete failed');
-                    }
-                })
-                .catch(error => {
-                    console.error('Unable to delete user.', error);
-                    showToast('Failed to delete user', 'error');
-                });
-        }
-
-        function displayEditUserForm(userJson) {
-            const user = JSON.parse(userJson);
-
-            document.getElementById('edit-name').value = user.name;
-            document.getElementById('edit-password').value = user.password || '';
-            document.getElementById('edit-role').value = user.role || 'User';
-            document.getElementById('edit-id').value = user.id;
-            document.getElementById('editForm').style.display = 'block';
-        }
-
-        function updateUser() {
-            const userId = document.getElementById('edit-id').value;
-            const name = document.getElementById('edit-name').value.trim();
-            const password = document.getElementById('edit-password').value.trim();
-            const role = document.getElementById('edit-role').value;
-
-            if (!name || !password) {
-                showToast('Name and password cannot be empty', 'warning');
-                return false;
-            }
-
-            authFetch(`${userApiUri}/${userId}`, {
-                method: 'PUT',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ id: parseInt(userId), name: name, password: password, role: role })
-            })
-                .then(response => {
-                    if (response.ok) {
-                        showToast('User updated successfully!', 'success');
-                        closeInput();
-                        getUsers();
-                    } else {
-                        return Promise.reject('Update failed');
-                    }
-                })
-                .catch(error => {
-                    console.error('Unable to update user.', error);
-                    showToast('Failed to update user', 'error');
-                });
-
-            return false;
-        }
-
-        function closeInput() {
-            document.getElementById('editForm').style.display = 'none';
-        }
-
-        function displayCount(count) {
-            const name = (count === 1) ? 'user' : 'users';
-            document.getElementById('counter').innerText = `${count} ${name}`;
-        }
-
-        function displayUsers(data) {
-            const tBody = document.getElementById('users');
-            tBody.innerHTML = '';
-
-            displayCount(data.length);
-
-            const button = document.createElement('button');
-
-            data.forEach(user => {
-                let editButton = button.cloneNode(false);
-                editButton.innerText = 'Edit';
-                editButton.setAttribute('onclick', `displayEditUserForm('${JSON.stringify(user).replace(/'/g, "\\'")}')`);
-
-                let deleteButton = button.cloneNode(false);
-                deleteButton.innerText = 'Delete';
-                deleteButton.setAttribute('onclick', `deleteUser(${user.id})`);
-
-                let tr = tBody.insertRow();
-
-                let td1 = tr.insertCell(0);
-                td1.appendChild(document.createTextNode(user.name));
-
-                let td2 = tr.insertCell(1);
-                td2.appendChild(document.createTextNode(user.role || 'User'));
-
-                let td3 = tr.insertCell(2);
-                td3.appendChild(editButton);
-
-                let td4 = tr.insertCell(3);
-                td4.appendChild(deleteButton);
-            });
-
-            users = data;
-        }
-
-        // ===== Edit Profile Functions =====
+        // ===== User-Specific Functions =====
         function toggleEditProfile() {
             const editProfileSection = document.getElementById('editProfileSection');
-            if (editProfileSection.style.display === 'none' || editProfileSection.style.display === '') {
-                editProfileSection.style.display = 'block';
+            editProfileSection.classList.toggle('hidden');
+            if (!editProfileSection.classList.contains('hidden')) {
                 document.getElementById('profile-name').value = getUserName() || '';
-            } else {
-                editProfileSection.style.display = 'none';
             }
         }
 
         function updateProfile() {
+            const userApiUri = '/api/User';
             const name = document.getElementById('profile-name').value.trim();
             const password = document.getElementById('profile-password').value;
 
             if (!name) {
                 showToast('Name cannot be empty', 'warning');
-                return;
+                return false;
             }
 
             const payload = { name };
@@ -423,7 +178,7 @@
                 .then(response => {
                     if (response.ok) {
                         showToast('Profile updated successfully!', 'success');
-                        document.getElementById('editProfileSection').style.display = 'none';
+                        document.getElementById('editProfileSection').classList.add('hidden');
                     } else {
                         return Promise.reject('Update failed');
                     }
@@ -432,75 +187,53 @@
                     console.error('Unable to update profile.', error);
                     showToast('Failed to update profile', 'error');
                 });
+            
+            return false;
         }
 
-        // ===== DOM Ready =====
+        // ===== Page Initialization =====
         document.addEventListener('DOMContentLoaded', () => {
             const greetingEl = document.getElementById('greeting');
             const protectedEl = document.getElementById('protectedContent');
-            const inlineLogin = document.getElementById('inlineLogin');
-
-            // Always show Edit Profile button for any authenticated user
             const userRole = getUserRole();
-            console.log('User role in user.html:', userRole, 'Type:', typeof userRole);
-            document.getElementById('editProfileBtn').style.display = 'inline-block';
-            if (greetingEl) greetingEl.innerText = `Welcome, ${getUserName()}!`;
 
-            // Admins see user management, others see only profile
-            if (userRole === 'Admin' || userRole === 'admin') {
-                if (protectedEl) protectedEl.style.display = 'block';
-                document.getElementById('editProfileSection').style.display = 'none';
-                if (getToken()) getUsers();
-            } else {
-                if (protectedEl) protectedEl.style.display = 'none';
-                document.getElementById('editProfileSection').style.display = 'none';
+            if (greetingEl) {
+                greetingEl.innerText = `👋 Welcome, ${getUserName()}!`;
             }
 
-            // Attach toggle handler
-            document.getElementById('editProfileBtn').addEventListener('click', toggleEditProfile);
+            // Always show Edit Profile button
+            document.getElementById('editProfileBtn').classList.remove('hidden');
 
+            // Role-based UI
+            if (userRole === 'Admin' || userRole === 'admin') {
+                // Admin: show user management
+                if (protectedEl) protectedEl.classList.remove('hidden');
+                document.getElementById('editProfileSection').classList.add('hidden');
+                if (getToken()) {
+                    getItems(); // Load users from siteUser.js
+                }
+            } else {
+                // Regular user: show profile editor only
+                if (protectedEl) protectedEl.classList.add('hidden');
+                document.getElementById('editProfileSection').classList.remove('hidden');
+            }
+
+            // Redirect if not authenticated
             if (!getToken()) {
                 location.href = 'login.html';
             }
         });
-    </script>
-    <script src="js/siteUser.js" asp-append-version="true"></script>
-    <script type="text/javascript">
-        // Toast helper functions
-        function showToast(message, type = 'info', duration = 3000) {
-            const container = document.getElementById('toastContainer') || createToastContainer();
-            const toast = document.createElement('div');
-            toast.className = `toast toast-${type}`;
-            toast.textContent = message;
-            toast.setAttribute('role', 'status');
-            container.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.classList.add('show');
-            }, 10);
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => container.removeChild(toast), 300);
-            }, duration);
-        }
 
-        function createToastContainer() {
-            const container = document.createElement('div');
-            container.id = 'toastContainer';
-            container.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                z-index: 9999;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            `;
-            document.body.appendChild(container);
-            return container;
-        }
-
+        // CRITICAL: Ensure initial data load after DOM ready
+        window.addEventListener('load', () => {
+            const userRole = getUserRole();
+            if (getToken() && (userRole === 'Admin' || userRole === 'admin')) {
+                console.log('[Data Trigger] Calling getItems() for user list (admin)...');
+                if (typeof getItems === 'function') {
+                    getItems();
+                }
+            }
+        });
     </script>
 </body>
 

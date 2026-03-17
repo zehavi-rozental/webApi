@@ -1,0 +1,16 @@
+{
+  "name": "scoopy-design-system",
+  "version": "1.0.0",
+  "description": "Scoopy Ice Cream Shop Design System with Tailwind CSS and DaisyUI",
+  "scripts": {
+    "tailwind": "tailwindcss -i ./פרויקט/wwwroot/css/input.css -o ./פרויקט/wwwroot/css/site.css --watch",
+    "build-css": "tailwindcss -i ./פרויקט/wwwroot/css/input.css -o ./פרויקט/wwwroot/css/site.css",
+    "rebuild": "tailwindcss -i ./פרויקט/wwwroot/css/input.css -o ./פרויקט/wwwroot/css/site.css"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "daisyui": "^4.10.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^4.2.1"
+  }
+}

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\MyMiddleware.csproj": {}
+    "C:\\Users\\ללי\\Desktop\\webApi\\פרויקט\\MyMiddleware.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\MyMiddleware.csproj": {
+    "C:\\Users\\ללי\\Desktop\\webApi\\פרויקט\\MyMiddleware.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\MyMiddleware.csproj",
+        "projectUniqueName": "C:\\Users\\ללי\\Desktop\\webApi\\פרויקט\\MyMiddleware.csproj",
         "projectName": "MyMiddleware",
-        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\MyMiddleware.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\webApi\\פרויקט\\obj\\",
+        "projectPath": "C:\\Users\\ללי\\Desktop\\webApi\\פרויקט\\MyMiddleware.csproj",
+        "packagesPath": "C:\\Users\\ללי\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ללי\\Desktop\\webApi\\פרויקט\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ללי\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -107,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

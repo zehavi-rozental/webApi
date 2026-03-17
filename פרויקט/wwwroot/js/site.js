@@ -1,7 +1,11 @@
+// ===== API CONFIGURATION =====
 const uri = '/api/IceCream';
 const userApiUri = '/api/User';
+
+// ===== STATE MANAGEMENT =====
 let iceCreams = [];
 let signalRConnection = null;
+let isConnected = false;
 
 // ===== Toast Notification System =====
 function showToast(message, type = 'info', duration = 3000) {
@@ -169,13 +173,22 @@ function deleteItem(id) {
 function displayEditIceCreamForm(id) {
     const item = iceCreams.find(item => item.id === id);
     if (!item) {
-        showToast('Item not found', 'error');
-        return;
+        showToast('Ice cream not found', 'error');
+        return false;
     }
-    document.getElementById('edit-name').value = item.name;
-    document.getElementById('edit-id').value = item.id;
+
+    // Populate form fields
+    document.getElementById('edit-name').value = item.name || '';
+    document.getElementById('edit-id').value = item.id || '';
     document.getElementById('edit-milki').checked = item.Milki || item.milki || false;
-    document.getElementById('editForm').style.display = 'block';
+
+    // Show form with glassmorphic animation
+    const form = document.getElementById('editForm');
+    form.classList.remove('hidden');
+    form.classList.add('show');
+    document.getElementById('edit-name').focus();
+
+    return false;
 }
 
 function updateItem() {
@@ -233,7 +246,14 @@ function updateItem() {
 }
 
 function closeInput() {
-    document.getElementById('editForm').style.display = 'none';
+    const form = document.getElementById('editForm');
+    form.classList.remove('show');
+    form.classList.add('hidden');
+    
+    // Clear form fields
+    document.getElementById('edit-name').value = '';
+    document.getElementById('edit-id').value = '';
+    document.getElementById('edit-milki').checked = false;
 }
 
 // ===== Display Functions =====
@@ -285,18 +305,46 @@ function _displayItems(data) {
 
 // ===== SignalR Integration =====
 function initSignalR() {
+    if (!window.signalR) {
+        console.warn('SignalR not loaded');
+        return;
+    }
+
     signalRConnection = new signalR.HubConnectionBuilder()
         .withUrl("/activityHub", {
             accessTokenFactory: () => getToken()
         })
-        .withAutomaticReconnect()
+        .withAutomaticReconnect({
+            nextRetryDelayInMilliseconds: retryContext => {
+                if (retryContext.previousRetryCount === 0) { return 0; }
+                if (retryContext.previousRetryCount === 1) { return 2000; }
+                if (retryContext.previousRetryCount < 5) { return 5000; }
+                return 10000;
+            }
+        })
         .build();
+
+    // Handle connection state
+    signalRConnection.onreconnected(() => {
+        isConnected = true;
+        showToast('Reconnected to real-time updates', 'success');
+        getItems(); // Refresh data on reconnect
+    });
+
+    signalRConnection.onreconnecting(() => {
+        isConnected = false;
+        showToast('Attempting to reconnect...', 'warning');
+    });
+
+    signalRConnection.onclose(() => {
+        isConnected = false;
+        showToast('Connection lost. Will attempt to reconnect...', 'warning');
+    });
 
     // Receive activity notifications and update grid
     signalRConnection.on("ReceiveActivity", function (data) {
         if (!data) return;
         
-        // Show toast notification for the activity
         const username = data.username || 'Someone';
         const action = data.action || 'performed action';
         const itemName = data.itemName || 'item';
@@ -304,62 +352,85 @@ function initSignalR() {
         let message = '';
         switch (action) {
             case 'added':
-                message = `Ice cream '${itemName}' was added`;
+                message = `'${itemName}' was added`;
                 break;
             case 'updated':
-                message = `Ice cream '${itemName}' was updated`;
+                message = `'${itemName}' was updated`;
                 break;
             case 'deleted':
-                message = `Ice cream '${itemName}' was deleted`;
+                message = `'${itemName}' was deleted`;
                 break;
             default:
-                message = `${username} ${action} '${itemName}'`;
+                message = `${username} ${action}`;
         }
         
         showToast(message, 'info');
-        
-        // Update the grid with latest data from server
-        getItems();
-    });
-
-    signalRConnection.on("UserConnected", function (data) {
-        console.log("Ucted:", data);
-    });
-
-    signalRConnection.on("UserDisconnected", function (data) {
-        console.log("User disconnected:", data);
+        getItems(); // Refresh the grid
     });
 
     signalRConnection.start()
         .then(() => {
-            console.log("Scted");
+            isConnected = true;
+            console.log('Connected to activity hub');
             showToast('Connected to real-time updates', 'success');
         })
         .catch(err => {
+            isConnected = false;
             console.error("SignalR connection error:", err);
-            showToast('Failed to connect to real-time updates', 'warning');
+            showToast('Real-time updates unavailable', 'warning');
         });
 }
 
 // ===== Toggle Profile Form =====
 function toggleProfileForm() {
     const form = document.getElementById('profileForm');
-    form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+    if (!form) return;
+    
+    const isHidden = form.classList.contains('hidden');
+    if (isHidden) {
+        // Opening: Pre-fill current name from greeting
+        const currentName = getUserName();
+        if (currentName) {
+            document.getElementById('profile-name').value = currentName;
+        }
+        // Clear password field for security
+        document.getElementById('profile-password').value = '';
+        
+        form.classList.remove('hidden');
+        form.classList.add('show');
+        document.getElementById('profile-name').focus();
+    } else {
+        // Closing: Clear form
+        form.classList.remove('show');
+        form.classList.add('hidden');
+        document.getElementById('profile-name').value = '';
+        document.getElementById('profile-password').value = '';
+    }
 }
 
 // ===== Update Profile =====
 function updateProfile() {
     const name = document.getElementById('profile-name').value.trim();
-    const password = document.getElementById('profile-password').value;
+    const password = document.getElementById('profile-password').value.trim();
 
     if (!name) {
         showToast('Name cannot be empty', 'warning');
-        return;
+        document.getElementById('profile-name').focus();
+        return false;
     }
 
-    const payload = { name };
+    // Get current user ID from token
+    const payload = {
+        Name: name,
+        // SECURITY: Only send Name and Password, NEVER include Role to prevent privilege escalation
+    };
+    
     if (password) {
-        payload.password = password;
+        if (password.length < 3) {
+            showToast('Password must be at least 3 characters', 'warning');
+            return false;
+        }
+        payload.Password = password;
     }
 
     authFetch(`${userApiUri}/profile`, {
@@ -372,15 +443,40 @@ function updateProfile() {
     })
         .then(response => {
             if (response.ok) {
-                showToast('Profile updated successfully!', 'success');
+                showToast('Profile updated successfully! ✅', 'success');
+                
+                // Update greeting in navbar without page refresh
+                updateGreeting(name);
+                
+                // Close profile form
+                toggleProfileForm();
+                
+                // Clear password field
+                document.getElementById('profile-password').value = '';
+            } else if (response.status === 400) {
+                return response.json().then(err => {
+                    throw new Error(err.message || 'Invalid input');
+                });
+            } else if (response.status === 401) {
+                showToast('Session expired. Please log in again.', 'error');
+                handleLogout();
             } else {
-                return Promise.reject('Update failed');
+                throw new Error('Update failed');
             }
         })
         .catch(error => {
-            console.error('Unable to update profile.', error);
-            showToast('Failed to update profile', 'error');
+            console.error('Unable to update profile:', error);
+            showToast('Failed to update profile: ' + error.message, 'error');
         });
+    return false;
+}
+
+// ===== Update Greeting in Navbar =====
+function updateGreeting(newName) {
+    const greetingEl = document.getElementById('greeting');
+    if (greetingEl) {
+        greetingEl.textContent = `👋 Welcome, ${newName}!`;
+    }
 }
 
 // ===== Logout =====

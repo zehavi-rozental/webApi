@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Users - Ice Cream Admin</title>
+    <link rel="stylesheet" href="css/site.css" />
+    <style>
+        /* Toast Notifications */
+        .toast {
+            padding: 12px 20px;
+            border-radius: 4px;
+            color: white;
+            font-weight: 500;
+            opacity: 0;
+            display: none;
+            transition: opacity 0.3s ease;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+            display: block;
+        }
+
+        .toast-success {
+            background-color: #10b981;
+        }
+
+        .toast-error {
+            background-color: #ef4444;
+        }
+
+        .toast-warning {
+            background-color: #f59e0b;
+        }
+
+        .toast-info {
+            background-color: #3b82f6;
+        }
+
+        .nav-link {
+            cursor: pointer;
+            color: #7a5863;
+            font-weight: 500;
+            text-decoration: underline;
+            margin-right: 20px;
+        }
+
+        .nav-link:hover {
+            color: #5a4863;
+        }
+    </style>
+</head>
+
+<body>
+    <header style="max-width:820px;margin:0 auto 1rem;display:flex;justify-content:space-between;align-items:center;">
+        <div id="greeting" style="color:#7a5863;font-weight:500;"></div>
+        <div>
+            <span id="itemsLink" class="nav-link" onclick="location.href='index.html'">🍦 Items</span>
+            <button id="editProfileBtn" onclick="toggleEditProfile()" style="display:none;padding:8px 16px;background-color:#3b82f6;color:white;border:none;border-radius:4px;cursor:pointer;margin-right:10px;">Edit Profile</button>
+            <button id="logoutBtn" onclick="handleLogout()" style="padding:8px 16px;background-color:#dc2626;color:white;border:none;border-radius:4px;cursor:pointer;">Logout</button>
+        </div>
+    </header>
+
+    <div id="inlineLogin" class="login-card" style="max-width:520px;margin:1rem auto;display:none;">
+        <form id="inlineLoginForm" action="javascript:void(0);" onsubmit="handleInlineLogin(event)">
+            <input id="inline-username" type="text" placeholder="שם משתמש" required />
+            <input id="inline-password" type="password" placeholder="סיסמה" required />
+            <input class="login-submit" type="submit" value="התחבר" />
+            <p id="inline-error" style="color:#b91c1c;margin-top:0.5rem;display:none"></p>
+        </form>
+    </div>
+
+    <div id="protectedContent" style="display:none;">
+        <h1>User Management👤</h1>
+        <h3>Add User</h3>
+        <form id="addForm" action="javascript:void(0);" method="POST" onsubmit="addUser()">
+            <input type="text" id="add-name" placeholder="New user name" required>
+            <input type="password" id="add-password" placeholder="Password" required>
+            <select id="add-role" required>
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+            </select>
+            <input type="submit" value="Add">
+        </form>
+
+        <div id="editForm">
+            <h3>Edit User</h3>
+            <form action="javascript:void(0);" onsubmit="updateUser()">
+                <input type="hidden" id="edit-id">
+                <input type="text" id="edit-name" placeholder="User name" required>
+                <input type="password" id="edit-password" placeholder="Password" required>
+                <select id="edit-role" required>
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                <input type="submit" value="Save">
+                <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+            </form>
+        </div>
+
+        <div id="editProfileSection" style="display:none;">
+            <h3>Edit Profile</h3>
+            <form id="editProfileForm" action="javascript:void(0);" onsubmit="updateProfile()">
+                <input type="text" id="profile-name" placeholder="Your name" required>
+                <input type="password" id="profile-password" placeholder="New password">
+                <input type="submit" value="Save">
+            </form>
+        </div>
+
+        <p id="counter"></p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tbody id="users"></tbody>
+        </table>
+    </div>
+
+    <script>
+        const userApiUri = '/api/User';
+        let users = [];
+
+        function getToken() {
+            const token = localStorage.getItem('token');
+            if (!token) return null;
+
+            const payload = getPayloadFromToken(token);
+            if (!payload) {
+                localStorage.removeItem('token');
+                return null;
+            }
+
+            const now = Math.floor(Date.now() / 1000);
+            if (payload.exp && now >= payload.exp) {
+                localStorage.removeItem('token');
+                return null;
+            }
+
+            return token;
+        }
+
+        function setToken(token) { localStorage.setItem('token', token); }
+        function removeToken() { localStorage.removeItem('token'); }
+
+        function getPayloadFromToken(token) {
+            const t = token || localStorage.getItem('token');
+            if (!t) return null;
+            const parts = t.split('.');
+            if (parts.length < 2) return null;
+            try {
+                const base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+                return JSON.parse(atob(base64));
+            } catch (e) { return null; }
+        }
+
+        function getUserName() { 
+            const p = getPayloadFromToken(); 
+            if (!p) return null; 
+            return p.name || p.unique_name || p.username || p.sub || null; 
+        }
+
+        function getUserRole() {
+            const p = getPayloadFromToken();
+            if (!p) return null;
+            return p.role || p['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] || null;
+        }
+
+        function handleLogout() {
+            removeToken();
+            location.href = 'login.html';
+        }
+
+        // ===== Toast Notifications =====
+        function showToast(message, type = 'info', duration = 3000) {
+            const container = document.getElementById('toastContainer') || createToastContainer();
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.textContent = message;
+            toast.setAttribute('role', 'status');
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => container.removeChild(toast), 300);
+            }, duration);
+        }
+
+        function createToastContainer() {
+            const container = document.createElement('div');
+            container.id = 'toastContainer';
+            container.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 9999;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            `;
+            document.body.appendChild(container);
+            return container;
+        }
+
+        // ===== Authenticated Fetch =====
+        function authFetch(url, opts = {}) {
+            const token = localStorage.getItem('token');
+            opts.headers = Object.assign({}, opts.headers || {}, token ? { 'Authorization': 'Bearer ' + token } : {});
+            return fetch(url, opts).then(response => {
+                if (response.status === 401) {
+                    localStorage.removeItem('token');
+                    if (window.showInlineLogin) {
+                        try { window.showInlineLogin(); } catch (e) { }
+                    } else {
+                        location.href = 'login.html';
+                    }
+                    throw new Error('Unauthorized');
+                }
+                return response;
+            });
+        }
+
+        // ===== CRUD Operations =====
+        function getUsers() {
+            authFetch(userApiUri)
+                .then(response => response.json())
+                .then(data => displayUsers(data))
+                .catch(error => {
+                    console.error('Unable to get users.', error);
+                    showToast('Failed to load users', 'error');
+                });
+        }
+
+        function addUser() {
+            const addNameInput = document.getElementById('add-name');
+            const addPasswordInput = document.getElementById('add-password');
+            const addRoleSelect = document.getElementById('add-role');
+            const name = addNameInput.value.trim();
+            const password = addPasswordInput.value.trim();
+            const role = addRoleSelect.value;
+
+            if (!name || !password) {
+                showToast('Please enter name and password', 'warning');
+                return;
+            }
+
+            authFetch(userApiUri, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ Name: name, Password: password, Role: role })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        showToast('User added successfully!', 'success');
+                        addNameInput.value = '';
+                        getUsers();
+                    } else {
+                        return Promise.reject('Add failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Unable to add user.', error);
+                    showToast('Failed to add user', 'error');
+                });
+        }
+
+        function deleteUser(id) {
+            if (!confirm('Are you sure? This will also delete all their items.')) return;
+
+            authFetch(`${userApiUri}/${id}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        showToast('User deleted successfully!', 'success');
+                        getUsers();
+                    } else {
+                        return Promise.reject('Delete failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Unable to delete user.', error);
+                    showToast('Failed to delete user', 'error');
+                });
+        }
+
+        function displayEditUserForm(userJson) {
+            const user = JSON.parse(userJson);
+
+            document.getElementById('edit-name').value = user.name;
+            document.getElementById('edit-password').value = user.password || '';
+            document.getElementById('edit-role').value = user.role || 'User';
+            document.getElementById('edit-id').value = user.id;
+            document.getElementById('editForm').style.display = 'block';
+        }
+
+        function updateUser() {
+            const userId = document.getElementById('edit-id').value;
+            const name = document.getElementById('edit-name').value.trim();
+            const password = document.getElementById('edit-password').value.trim();
+            const role = document.getElementById('edit-role').value;
+
+            if (!name || !password) {
+                showToast('Name and password cannot be empty', 'warning');
+                return false;
+            }
+
+            authFetch(`${userApiUri}/${userId}`, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: parseInt(userId), name: name, password: password, role: role })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        showToast('User updated successfully!', 'success');
+                        closeInput();
+                        getUsers();
+                    } else {
+                        return Promise.reject('Update failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Unable to update user.', error);
+                    showToast('Failed to update user', 'error');
+                });
+
+            return false;
+        }
+
+        function closeInput() {
+            document.getElementById('editForm').style.display = 'none';
+        }
+
+        function displayCount(count) {
+            const name = (count === 1) ? 'user' : 'users';
+            document.getElementById('counter').innerText = `${count} ${name}`;
+        }
+
+        function displayUsers(data) {
+            const tBody = document.getElementById('users');
+            tBody.innerHTML = '';
+
+            displayCount(data.length);
+
+            const button = document.createElement('button');
+
+            data.forEach(user => {
+                let editButton = button.cloneNode(false);
+                editButton.innerText = 'Edit';
+                editButton.setAttribute('onclick', `displayEditUserForm('${JSON.stringify(user).replace(/'/g, "\\'")}')`);
+
+                let deleteButton = button.cloneNode(false);
+                deleteButton.innerText = 'Delete';
+                deleteButton.setAttribute('onclick', `deleteUser(${user.id})`);
+
+                let tr = tBody.insertRow();
+
+                let td1 = tr.insertCell(0);
+                td1.appendChild(document.createTextNode(user.name));
+
+                let td2 = tr.insertCell(1);
+                td2.appendChild(document.createTextNode(user.role || 'User'));
+
+                let td3 = tr.insertCell(2);
+                td3.appendChild(editButton);
+
+                let td4 = tr.insertCell(3);
+                td4.appendChild(deleteButton);
+            });
+
+            users = data;
+        }
+
+        // ===== Edit Profile Functions =====
+        function toggleEditProfile() {
+            const editProfileSection = document.getElementById('editProfileSection');
+            if (editProfileSection.style.display === 'none' || editProfileSection.style.display === '') {
+                editProfileSection.style.display = 'block';
+                document.getElementById('profile-name').value = getUserName() || '';
+            } else {
+                editProfileSection.style.display = 'none';
+            }
+        }
+
+        function updateProfile() {
+            const name = document.getElementById('profile-name').value.trim();
+            const password = document.getElementById('profile-password').value;
+
+            if (!name) {
+                showToast('Name cannot be empty', 'warning');
+                return;
+            }
+
+            const payload = { name };
+            if (password) {
+                payload.password = password;
+            }
+
+            authFetch(`${userApiUri}/profile`, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        showToast('Profile updated successfully!', 'success');
+                        document.getElementById('editProfileSection').style.display = 'none';
+                    } else {
+                        return Promise.reject('Update failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Unable to update profile.', error);
+                    showToast('Failed to update profile', 'error');
+                });
+        }
+
+        // ===== DOM Ready =====
+        document.addEventListener('DOMContentLoaded', () => {
+            const greetingEl = document.getElementById('greeting');
+            const protectedEl = document.getElementById('protectedContent');
+            const inlineLogin = document.getElementById('inlineLogin');
+
+            // Always show Edit Profile button for any authenticated user
+            const userRole = getUserRole();
+            console.log('User role in user.html:', userRole, 'Type:', typeof userRole);
+            document.getElementById('editProfileBtn').style.display = 'inline-block';
+            if (greetingEl) greetingEl.innerText = `Welcome, ${getUserName()}!`;
+
+            // Admins see user management, others see only profile
+            if (userRole === 'Admin' || userRole === 'admin') {
+                if (protectedEl) protectedEl.style.display = 'block';
+                document.getElementById('editProfileSection').style.display = 'none';
+                if (getToken()) getUsers();
+            } else {
+                if (protectedEl) protectedEl.style.display = 'none';
+                document.getElementById('editProfileSection').style.display = 'none';
+            }
+
+            // Attach toggle handler
+            document.getElementById('editProfileBtn').addEventListener('click', toggleEditProfile);
+
+            if (!getToken()) {
+                location.href = 'login.html';
+            }
+        });
+    </script>
+    <script src="js/siteUser.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        // Toast helper functions
+        function showToast(message, type = 'info', duration = 3000) {
+            const container = document.getElementById('toastContainer') || createToastContainer();
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.textContent = message;
+            toast.setAttribute('role', 'status');
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => container.removeChild(toast), 300);
+            }, duration);
+        }
+
+        function createToastContainer() {
+            const container = document.createElement('div');
+            container.id = 'toastContainer';
+            container.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 9999;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            `;
+            document.body.appendChild(container);
+            return container;
+        }
+
+    </script>
+</body>
+
+</html>
