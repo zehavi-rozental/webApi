@@ -73,7 +73,7 @@ public class IceCreamService : GenericJsonService<IceCream>, IIIceCreams
     public override void Add(IceCream item)
     {
         base.Add(item);
-        BroadcastActivityToUser("added", item.Name);
+        BroadcastActivityToUser("added", item);
     }
 
     public override void Delete(int id)
@@ -81,7 +81,7 @@ public class IceCreamService : GenericJsonService<IceCream>, IIIceCreams
         var item = Get(id);
         if (item != null)
         {
-            BroadcastActivityToUser("deleted", item.Name);
+            BroadcastActivityToUser("deleted", item);
         }
         base.Delete(id);
     }
@@ -90,7 +90,7 @@ public class IceCreamService : GenericJsonService<IceCream>, IIIceCreams
     {
         // Do not change UserId here, as it should remain the same
         base.Update(item);
-        BroadcastActivityToUser("updated", item.Name);
+        BroadcastActivityToUser("updated", item);
     }
 
     // For internal use: delete all items belonging to a user (cascading delete)
@@ -104,13 +104,27 @@ public class IceCreamService : GenericJsonService<IceCream>, IIIceCreams
         SaveToFile();
     }
 
-    private void BroadcastActivityToUser(string action, string itemName)
+    private void BroadcastActivityToUser(string action, IceCream? item)
     {
         var user = activeUser.ActiveUser;
         if (user != null)
         {
             // Only notify the current user's connections
-            hubContext.Clients.User(user.Id).SendAsync("ReceiveActivity", new { username = user.Username, action, itemName });
+            // Include the full item when available so the UI can update locally without reloading the entire list.
+            var payload = new
+            {
+                username = user.Username,
+                action,
+                item = item == null ? null : new
+                {
+                    id = item.Id,
+                    name = item.Name,
+                    milki = item.Milki,
+                    userId = item.UserId
+                }
+            };
+
+            hubContext.Clients.User(user.Id).SendAsync("ReceiveActivity", payload);
         }
     }
 }

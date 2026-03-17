@@ -33,8 +33,11 @@ namespace MyMiddleware.Controllers
         {
             // אימות משתמש מול ה-database
             var users = userService.GetAll();
-            var user = users.FirstOrDefault(u => u.Name == request.Username && u.Password == request.Password);
-            
+            var user = users.FirstOrDefault(u =>
+                (string.Equals(u.Email, request.Username, StringComparison.OrdinalIgnoreCase) ||
+                 string.Equals(u.Name, request.Username, StringComparison.OrdinalIgnoreCase))
+                && u.Password == request.Password);
+
             if (user == null)
             {
                 return Unauthorized();

@@ -32,6 +32,8 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.File(
         path: logFile,
         rollingInterval: RollingInterval.Day,
+        fileSizeLimitBytes: 50 * 1024 * 1024,
+        rollOnFileSizeLimit: true,
         buffered: false,
         shared: true,
         outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
@@ -49,7 +51,12 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost", policy =>
     {
-        policy.WithOrigins("http://localhost:5000", "https://localhost:5001", "http://127.0.0.1:5000", "https://127.0.0.1:5001")
+        policy.WithOrigins(
+                "http://localhost:5000",
+                "https://localhost:5001",
+                "http://127.0.0.1:5000",
+                "https://127.0.0.1:5001",
+                "https://accounts.google.com")
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials();

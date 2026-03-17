@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Ice cream</title>
     <link rel="stylesheet" href="css/site.css" />
+    <link rel="icon" href="favicon.ico" />
     <style>
         /* Toast Notifications */
         .toast {
@@ -147,14 +148,30 @@
         function setToken(token) { localStorage.setItem('token', token); }
         function removeToken() { localStorage.removeItem('token'); }
 
+        function base64UrlDecode(str) {
+            // Base64 URL safe -> standard Base64
+            str = str.replace(/-/g, '+').replace(/_/g, '/');
+            // Pad with '=' to make length divisible by 4
+            while (str.length % 4) {
+                str += '=';
+            }
+
+            // Decode base64 to bytes, then decode as UTF-8.
+            const bytes = Uint8Array.from(atob(str), c => c.charCodeAt(0));
+            if (typeof TextDecoder !== 'undefined') {
+                return new TextDecoder('utf-8').decode(bytes);
+            }
+            // Fallback for older browsers: treat as Latin1 (may cause ugliness with non-ASCII)
+            return String.fromCharCode.apply(null, bytes);
+        }
+
         function getPayloadFromToken(token) {
             const t = token || localStorage.getItem('token');
             if (!t) return null;
             const parts = t.split('.');
             if (parts.length < 2) return null;
             try {
-                const base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
-                const json = atob(base64);
+                const json = base64UrlDecode(parts[1]);
                 return JSON.parse(json);
             } catch (e) {
                 return null;
@@ -164,7 +181,15 @@
         function getUserName() {
             const p = getPayloadFromToken();
             if (!p) return null;
-            return p.name || p.unique_name || p.username || p.sub || null;
+            const name = p.name || p.unique_name || p.username || p.sub || p['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+            if (name) return name;
+
+            const email = p.email || p.upn;
+            if (typeof email === 'string' && email.includes('@')) {
+                return email.split('@')[0];
+            }
+
+            return null;
         }
 
         function getUserRole() {
