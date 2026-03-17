@@ -7,8 +7,9 @@
    - Primary: #F4559E (Scoopy Pink)
    - Secondary: #F49F46 (Orange)
    - Accent: #C4B88C (Warm Tan)
+   - Neutral: #A68676 (Tone)
    - Base-100: #F2E8E6 (Rose Background)
-   - Base-Content: #190E0B (Deep Black)
+   - Base-Content: #190E0B (Deep Espresso)
    
    ✨ DESIGN PHILOSOPHY: Minimalism with Glassmorphism, soft interactions, premium feel
    =================================================================================================== */
@@ -25,8 +26,6 @@
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.12);
-  --glass-blur: backdrop-filter: blur(10px);
-  --glass-bg: rgba(255, 255, 255, 0.7);
 }
 
 /* ===== GLOBAL RESET & BASE STYLES ===== */
