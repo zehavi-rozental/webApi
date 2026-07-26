@@ -130,10 +130,11 @@ function _displayCount(itemCount) {
 }
 
 function _displayItems(data) {
+    users = Array.isArray(data) ? data : [];
     const tBody = document.getElementById('users');
     tBody.innerHTML = '';
 
-    _displayCount(data.length);
+    _displayCount(users.length);
 
     const button = document.createElement('button');
 

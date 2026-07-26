@@ -32,6 +32,7 @@ namespace MyMiddleware.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
                     Password = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
                     Role = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false, defaultValue: "User")
                 },

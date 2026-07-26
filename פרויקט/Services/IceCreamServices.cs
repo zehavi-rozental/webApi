@@ -67,7 +67,7 @@ public class IceCreamService : IIIceCreams
     {
         dbContext.IceCreams.Add(iceCream);
         dbContext.SaveChanges();
-        BroadcastActivityToUser("added", iceCream.Name);
+        BroadcastActivityToUser("added", iceCream);
     }
 
     public void Update(IceCream iceCream)
@@ -79,7 +79,7 @@ public class IceCreamService : IIIceCreams
             existing.Name = iceCream.Name;
             existing.Milki = iceCream.Milki;
             dbContext.SaveChanges();
-            BroadcastActivityToUser("updated", iceCream.Name);
+            BroadcastActivityToUser("updated", existing);
         }
     }
 
@@ -90,7 +90,7 @@ public class IceCreamService : IIIceCreams
         {
             dbContext.IceCreams.Remove(item);
             dbContext.SaveChanges();
-            BroadcastActivityToUser("deleted", item.Name);
+            BroadcastActivityToUser("deleted", item);
         }
     }
 
@@ -105,15 +105,15 @@ public class IceCreamService : IIIceCreams
         dbContext.SaveChanges();
     }
 
-    private void BroadcastActivityToUser(string action, string itemName)
+    private void BroadcastActivityToUser(string action, IceCream? item)
     {
         var user = activeUser.ActiveUser;
-        if (user != null)
+        if (user != null && item != null)
         {
             // Only notify the current user's connections
             try
             {
-                hubContext.Clients.User(user.Id).SendAsync("ReceiveActivity", new { username = user.Username, action, itemName }).ConfigureAwait(false);
+                hubContext.Clients.User(user.Id).SendAsync("ReceiveActivity", new { username = user.Username, action, itemName = item.Name }).ConfigureAwait(false);
             }
             catch (Exception ex)
             {

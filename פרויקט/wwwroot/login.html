@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>כניסה - חנות הגלידות</title>
     <link rel="stylesheet" href="css/site.css" />
+    <link rel="icon" href="favicon.ico" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
 <body>
@@ -20,6 +22,13 @@
                 <input id="username" type="text" placeholder="שם משתמש" aria-label="שם משתמש" required />
                 <input id="password" type="password" placeholder="סיסמה" aria-label="סיסמה" required />
                 <input class="login-submit" type="submit" value="התחבר" />
+
+                <div id="g_id_onload"
+                     data-client_id="405923075659-0bu4h5l9iobf933t9vqu4ebq6a4543ls.apps.googleusercontent.com"
+                     data-callback="handleCredentialResponse">
+                </div>
+                <div class="g_id_signin" data-type="standard"></div>
+
                 <p id="error" style="color:#b91c1c;margin-top:0.5rem;display:none"></p>
             </form>
 
@@ -28,14 +37,26 @@
     </main>
 
     <script>
+        function base64UrlDecode(str) {
+            str = str.replace(/-/g, '+').replace(/_/g, '/');
+            while (str.length % 4) {
+                str += '=';
+            }
+            const bytes = Uint8Array.from(atob(str), c => c.charCodeAt(0));
+            if (typeof TextDecoder !== 'undefined') {
+                return new TextDecoder('utf-8').decode(bytes);
+            }
+            return String.fromCharCode.apply(null, bytes);
+        }
+
         function getPayloadFromToken(token) {
             const t = token || localStorage.getItem('token');
             if (!t) return null;
             const parts = t.split('.');
             if (parts.length < 2) return null;
             try {
-                const base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
-                return JSON.parse(atob(base64));
+                const json = base64UrlDecode(parts[1]);
+                return JSON.parse(json);
             } catch (e) {
                 return null;
             }
@@ -92,6 +113,36 @@
                 errorEl.innerText = 'שגיאת רשת או בעיה בשרת.';
                 errorEl.style.display = 'block';
             }
+        }
+
+        async function handleCredentialResponse(response) {
+            const errorEl = document.getElementById('error');
+            errorEl.style.display = 'none';
+
+            try {
+                const res = await fetch('/api/auth/google', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ IdToken: response.credential })
+                });
+
+                if (res.ok) {
+                    const token = await res.text();
+                    localStorage.setItem('token', token);
+                    location.href = 'index.html';
+                    return;
+                }
+
+                if (res.status === 401) {
+                    errorEl.innerText = 'כניסה עם Google נכשלה (אסימון לא תקין או פג תוקף).';
+                } else {
+                    errorEl.innerText = 'אירעה שגיאה בכניסה עם Google, נסו שוב.';
+                }
+            } catch (err) {
+                errorEl.innerText = 'שגיאת רשת או בעיה בשרת בכניסה עם Google.';
+            }
+
+            errorEl.style.display = 'block';
         }
     </script>
 </body>

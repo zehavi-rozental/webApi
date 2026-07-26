@@ -51,14 +51,25 @@ function removeToken() {
     localStorage.removeItem('token'); 
 }
 
+function base64UrlDecode(str) {
+    str = str.replace(/-/g, '+').replace(/_/g, '/');
+    while (str.length % 4) {
+        str += '=';
+    }
+    const bytes = Uint8Array.from(atob(str), c => c.charCodeAt(0));
+    if (typeof TextDecoder !== 'undefined') {
+        return new TextDecoder('utf-8').decode(bytes);
+    }
+    return String.fromCharCode.apply(null, bytes);
+}
+
 function getPayloadFromToken() {
     const token = getToken();
     if (!token) return null;
     const parts = token.split('.');
     if (parts.length < 2) return null;
     try {
-        const base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
-        const json = atob(base64);
+        const json = base64UrlDecode(parts[1]);
         return JSON.parse(json);
     } catch (e) {
         return null;
@@ -243,10 +254,11 @@ function _displayCount(itemCount) {
 }
 
 function _displayItems(data) {
+    iceCreams = Array.isArray(data) ? data : [];
     const tBody = document.getElementById('iceCreams');
     tBody.innerHTML = '';
 
-    _displayCount(data.length);
+    _displayCount(iceCreams.length);
 
     const button = document.createElement('button');
 
@@ -318,8 +330,32 @@ function initSignalR() {
         
         showToast(message, 'info');
         
-        // Update the grid with latest data from server
-        getItems();
+        // Update the grid based on the changed item (avoid full refresh when possible)
+        const updatedItem = data.item;
+        if (updatedItem && typeof updatedItem.id !== 'undefined') {
+            switch (action) {
+                case 'added':
+                    iceCreams.push(updatedItem);
+                    break;
+                case 'updated':
+                    const idx = iceCreams.findIndex(i => i.id === updatedItem.id);
+                    if (idx >= 0) {
+                        iceCreams[idx] = updatedItem;
+                    } else {
+                        iceCreams.push(updatedItem);
+                    }
+                    break;
+                case 'deleted':
+                    iceCreams = iceCreams.filter(i => i.id !== updatedItem.id);
+                    break;
+                default:
+                    break;
+            }
+            _displayItems(iceCreams);
+        } else {
+            // Fallback: refresh the list if we don't have item details
+            getItems();
+        }
     });
 
     signalRConnection.on("UserConnected", function (data) {

@@ -10,7 +10,7 @@ using MyMiddleware.Data;
 namespace MyMiddleware.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260726162623_InitialCreate")]
+    [Migration("20260726170252_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -49,6 +49,10 @@ namespace MyMiddleware.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()

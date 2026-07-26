@@ -1,1 +1,11 @@
-[{"Id":2,"Name":"user1","Password":"1234","Role":"User"},{"Id":3,"Name":"user2","Password":"password2","Role":"User"},{"Id":4,"Name":"lali","Password":"1234","Role":"Admin"},{"Id":5,"Name":"zehavi","Password":"1234","Role":"Admin"},{"Id":6,"Name":"zehavi","Password":"12343","Role":"Admin"},{"Id":7,"Name":"z","Password":"1","Role":"User"},{"Id":8,"Name":"l","Password":"1","Role":"user"},{"Id":9,"Name":"l","Password":"1","Role":"user"}]
+[{"Id":2,"Name":"user1","Email":"user1@example.com","Password":"1234","Role":"User"},
+{"Id":3,"Name":"user2","Email":"user2@example.com","Password":"password2","Role":"User"},
+{"Id":4,"Name":"lali","Email":"lali@example.com","Password":"123","Role":"Admin"},
+{"Id":5,"Name":"zehavi","Email":"zehavi@example.com","Password":"1234","Role":"Admin"},
+{"Id":6,"Name":"zehavi","Email":"zehavi2@example.com","Password":"12343","Role":"Admin"},
+{"Id":7,"Name":"z","Email":"z@example.com","Password":"1","Role":"User"},
+{"Id":8,"Name":"l","Email":"l@example.com","Password":"1","Role":"user"},
+{"Id":9,"Name":"l","Email":"l2@example.com","Password":"1","Role":"user"},
+{"Id":10,"Name":"\u05DC\u05DC\u05D9 \u05E4\u05E4\u05E8","Email":"lali@example.com","Password":"123","Role":"Admin"},
+{"Id":11,"Name":"f9285660","Email":"f9285660@gmail.com","Password":"","Role":"User"},
+{"Id":12,"Name":"\u05DC\u05DC\u05D9 \u05E4\u05E4\u05E8","Email":"lalifefer7569@gmail.com","Password":"123","Role":"User"}]

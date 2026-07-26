@@ -56,6 +56,9 @@ namespace MyMiddleware.Extensions
             // שירות משתמש (Scoped כדי להתמודד עם מחיקה של waterfall)
             services.AddUserService();
 
+            // שירות אימות - כולל אימות Google ID Token ושחזור המשתמש הקיים
+            services.AddScoped<IAuthService, AuthService>();
+
             // Background logging
             services.AddSingleton<BackgroundLogQueue>();
             services.AddHostedService<BackgroundLogWorker>();
