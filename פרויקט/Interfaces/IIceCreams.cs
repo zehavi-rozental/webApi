@@ -10,5 +10,6 @@ namespace ServiceIceCream.interfaces
         void Delete(int id);
         void Update(IceCream iceCream);
         void DeleteAllByUserId(string userId);
+        List<IceCream> GetIceCreamsForUserSql(string userId);
     }
 }

@@ -33,6 +33,18 @@ namespace MyMiddleware.Controllers
             return Ok(service.GetAll());
         }
 
+        [HttpGet("by-user-sql")]
+        public ActionResult<List<IceCream>> GetByUserSql()
+        {
+            var user = activeUser.ActiveUser;
+            if (user == null)
+                return Unauthorized();
+
+            // This endpoint demonstrates raw SQL queries using EF Core's FromSqlInterpolated
+            var result = service.GetIceCreamsForUserSql(user.Id);
+            return Ok(result);
+        }
+
         [HttpGet("{id}")]
         public ActionResult<IceCream> Get(int id)
         {

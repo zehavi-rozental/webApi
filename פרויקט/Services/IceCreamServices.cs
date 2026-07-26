@@ -5,6 +5,7 @@ using KsIceCream.Hubs;
 using Microsoft.AspNetCore.SignalR;
 using Shared.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyMiddleware.Services;
 
@@ -103,6 +104,23 @@ public class IceCreamService : IIIceCreams
             dbContext.IceCreams.Remove(item);
         }
         dbContext.SaveChanges();
+    }
+
+    /// <summary>
+    /// Example of raw SQL query using EF Core's FromSqlInterpolated.
+    /// This demonstrates how to execute SQL directly while maintaining protection against SQL Injection.
+    /// The query uses SQL interpolation with parameters, which is the safe approach.
+    /// Use case: Performance optimization for complex queries that LINQ cannot efficiently translate.
+    /// </summary>
+    public List<IceCream> GetIceCreamsForUserSql(string userId)
+    {
+        // Safe SQL query using FromSqlInterpolated - parameters are handled automatically
+        // This query selects all ice creams for a user, ordered by name
+        var result = dbContext.IceCreams
+            .FromSqlInterpolated($"SELECT * FROM IceCreams WHERE UserId = {userId} ORDER BY Name")
+            .ToList();
+        
+        return result;
     }
 
     private void BroadcastActivityToUser(string action, IceCream? item)
