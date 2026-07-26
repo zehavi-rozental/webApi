@@ -2,8 +2,10 @@ using Shared.Interfaces;
 using MyMiddleware.Services;
 using MyMiddleware.Interfaces;
 using MyMiddleware.BackgroundServices;
+using MyMiddleware.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyMiddleware.Extensions
 {
@@ -14,6 +16,10 @@ namespace MyMiddleware.Extensions
     {
         public static IServiceCollection AddMyServices(this IServiceCollection services, IConfiguration configuration)
         {
+            // Entity Framework Core DbContext
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
+
             // HttpContextAccessor להגשת מידע משתמש בתוך שירותים
             services.AddHttpContextAccessor();
 

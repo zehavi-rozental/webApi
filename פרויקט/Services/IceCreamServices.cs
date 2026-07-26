@@ -1,19 +1,22 @@
 using MyMiddleware.Models;
+using MyMiddleware.Data;
 using ServiceIceCream.interfaces;
 using KsIceCream.Hubs;
-using Microsoft.Extensions.DependencyInjection;
-using Shared.Interfaces;
 using Microsoft.AspNetCore.SignalR;
-using System.Linq;
+using Shared.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MyMiddleware.Services;
-public class IceCreamService : GenericJsonService<IceCream>, IIIceCreams
+
+public class IceCreamService : IIIceCreams
 {
+    private readonly AppDbContext dbContext;
     private readonly IActiveUser activeUser;
     private readonly IHubContext<ActivityHub> hubContext;
 
-    public IceCreamService(IActiveUser activeUser, IHubContext<ActivityHub> hubContext) : base("IceCream.json")
+    public IceCreamService(AppDbContext dbContext, IActiveUser activeUser, IHubContext<ActivityHub> hubContext)
     {
+        this.dbContext = dbContext;
         this.activeUser = activeUser;
         this.hubContext = hubContext;
     }
@@ -34,31 +37,21 @@ public class IceCreamService : GenericJsonService<IceCream>, IIIceCreams
     {
         // Returns ice creams for the current user only
         var userId = GetCurrentUserId();
-        return Items.Where(i => i.UserId == userId).ToList();
+        return dbContext.IceCreams.Where(i => i.UserId == userId).ToList();
     }
 
-    public override List<IceCream> GetAll()
+    public List<IceCream> GetAll()
     {
         // Admins see all ice creams, regular users see only their own
         if (IsAdmin())
-            return Items;
+            return dbContext.IceCreams.ToList();
         return GetAllForCurrentUser();
     }
 
-    public override IceCream? Get(int id)
+    public IceCream? Get(int id)
     {
         var userId = GetCurrentUserId();
-        var idProperty = typeof(IceCream).GetProperty("Id");
-        if (idProperty == null)
-            return null;
-
-        var item = Items.FirstOrDefault(i =>
-        {
-            var idValue = idProperty.GetValue(i);
-            if (idValue is not int intId || intId != id)
-                return false;
-            return true;
-        });
+        var item = dbContext.IceCreams.FirstOrDefault(i => i.Id == id);
 
         if (item == null)
             return null;
@@ -70,38 +63,46 @@ public class IceCreamService : GenericJsonService<IceCream>, IIIceCreams
         return item.UserId == userId ? item : null;
     }
 
-    public override void Add(IceCream item)
+    public void Add(IceCream iceCream)
     {
-        base.Add(item);
-        BroadcastActivityToUser("added", item.Name);
+        dbContext.IceCreams.Add(iceCream);
+        dbContext.SaveChanges();
+        BroadcastActivityToUser("added", iceCream.Name);
     }
 
-    public override void Delete(int id)
+    public void Update(IceCream iceCream)
     {
-        var item = Get(id);
+        // Find the existing item and update only Name and Milki (not UserId)
+        var existing = dbContext.IceCreams.FirstOrDefault(i => i.Id == iceCream.Id);
+        if (existing != null)
+        {
+            existing.Name = iceCream.Name;
+            existing.Milki = iceCream.Milki;
+            dbContext.SaveChanges();
+            BroadcastActivityToUser("updated", iceCream.Name);
+        }
+    }
+
+    public void Delete(int id)
+    {
+        var item = dbContext.IceCreams.FirstOrDefault(i => i.Id == id);
         if (item != null)
         {
+            dbContext.IceCreams.Remove(item);
+            dbContext.SaveChanges();
             BroadcastActivityToUser("deleted", item.Name);
         }
-        base.Delete(id);
-    }
-
-    public override void Update(IceCream item)
-    {
-        // Do not change UserId here, as it should remain the same
-        base.Update(item);
-        BroadcastActivityToUser("updated", item.Name);
     }
 
     // For internal use: delete all items belonging to a user (cascading delete)
     public void DeleteAllByUserId(string userId)
     {
-        var itemsToDelete = Items.Where(i => i.UserId == userId).ToList();
+        var itemsToDelete = dbContext.IceCreams.Where(i => i.UserId == userId).ToList();
         foreach (var item in itemsToDelete)
         {
-            Items.Remove(item);
+            dbContext.IceCreams.Remove(item);
         }
-        SaveToFile();
+        dbContext.SaveChanges();
     }
 
     private void BroadcastActivityToUser(string action, string itemName)
@@ -110,7 +111,14 @@ public class IceCreamService : GenericJsonService<IceCream>, IIIceCreams
         if (user != null)
         {
             // Only notify the current user's connections
-            hubContext.Clients.User(user.Id).SendAsync("ReceiveActivity", new { username = user.Username, action, itemName });
+            try
+            {
+                hubContext.Clients.User(user.Id).SendAsync("ReceiveActivity", new { username = user.Username, action, itemName }).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine($"Error broadcasting activity: {ex.Message}");
+            }
         }
     }
 }

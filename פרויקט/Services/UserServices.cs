@@ -1,27 +1,66 @@
 using MyMiddleware.Models;
+using MyMiddleware.Data;
 using ServiceUsers.interfaces;
-using Microsoft.Extensions.DependencyInjection;
 using ServiceIceCream.interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MyMiddleware.Services;
-public class UserService : GenericJsonService<User>, IIUsers
+
+public class UserService : IIUsers
 {
+    private readonly AppDbContext dbContext;
     private readonly IIIceCreams? iceCreamService;
 
-    public UserService(IIIceCreams? iceCreamService = null) : base("Users.json")
+    public UserService(AppDbContext dbContext, IIIceCreams? iceCreamService = null)
     {
+        this.dbContext = dbContext;
         this.iceCreamService = iceCreamService;
     }
 
-    public override void Delete(int id)
+    public List<User> GetAll()
+    {
+        return dbContext.Users.ToList();
+    }
+
+    public User? Get(int id)
+    {
+        return dbContext.Users.FirstOrDefault(u => u.Id == id);
+    }
+
+    public void Add(User user)
+    {
+        dbContext.Users.Add(user);
+        dbContext.SaveChanges();
+    }
+
+    public void Update(User user)
+    {
+        var existing = dbContext.Users.FirstOrDefault(u => u.Id == user.Id);
+        if (existing != null)
+        {
+            existing.Name = user.Name;
+            existing.Password = user.Password;
+            existing.Role = user.Role;
+            dbContext.SaveChanges();
+        }
+    }
+
+    public void Delete(int id)
     {
         var user = Get(id);
         if (user is not null && iceCreamService != null)
         {
-            // מחיקה waterfall: הסר את כל פריטי הגלידה של המשתמש הזה
+            // Cascading delete: remove all ice creams of this user first
             iceCreamService.DeleteAllByUserId(user.Id.ToString());
         }
-        base.Delete(id);
+
+        // Now delete the user
+        var userToDelete = dbContext.Users.FirstOrDefault(u => u.Id == id);
+        if (userToDelete != null)
+        {
+            dbContext.Users.Remove(userToDelete);
+            dbContext.SaveChanges();
+        }
     }
 }
 
