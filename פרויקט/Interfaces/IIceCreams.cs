@@ -11,5 +11,7 @@ namespace ServiceIceCream.interfaces
         void Update(IceCream iceCream);
         void DeleteAllByUserId(string userId);
         List<IceCream> GetIceCreamsForUserSql(string userId);
+        List<UserIceCreamStatsDto> GetUserIceCreamStatsSql();
+        List<UserIceCreamRankingDto> GetTopUserByIceCreamCountSql();
     }
 }

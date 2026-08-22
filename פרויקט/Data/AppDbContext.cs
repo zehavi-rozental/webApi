@@ -28,6 +28,7 @@ namespace MyMiddleware.Data
                 entity.Property(e => e.UserId)
                     .IsRequired()
                     .HasMaxLength(256);
+                entity.HasIndex(e => e.UserId);
             });
 
             // Configure User

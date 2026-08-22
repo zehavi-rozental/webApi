@@ -45,6 +45,20 @@ namespace MyMiddleware.Controllers
             return Ok(result);
         }
 
+        [HttpGet("stats")]
+        [Authorize(Roles = "Admin")]
+        public ActionResult<List<UserIceCreamStatsDto>> GetStats()
+        {
+            return Ok(service.GetUserIceCreamStatsSql());
+        }
+
+        [HttpGet("ranking")]
+        [Authorize(Roles = "Admin")]
+        public ActionResult<List<UserIceCreamRankingDto>> GetRanking()
+        {
+            return Ok(service.GetTopUserByIceCreamCountSql());
+        }
+
         [HttpGet("{id}")]
         public ActionResult<IceCream> Get(int id)
         {

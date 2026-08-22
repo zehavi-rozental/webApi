@@ -123,6 +123,32 @@ public class IceCreamService : IIIceCreams
         return result;
     }
 
+    public List<UserIceCreamStatsDto> GetUserIceCreamStatsSql()
+    {
+        return dbContext.Database.SqlQuery<UserIceCreamStatsDto>($"""
+            SELECT u.Name,
+                   COUNT(i.Id) AS TotalCount,
+                   SUM(CASE WHEN i.Milki = 1 THEN 1 ELSE 0 END) AS MilkiCount
+            FROM Users u
+            JOIN IceCreams i ON CAST(u.Id AS TEXT) = i.UserId
+            GROUP BY u.Id, u.Name
+            HAVING COUNT(i.Id) > 0
+            ORDER BY TotalCount DESC
+            """).ToList();
+    }
+
+    public List<UserIceCreamRankingDto> GetTopUserByIceCreamCountSql()
+    {
+        return dbContext.Database.SqlQuery<UserIceCreamRankingDto>($"""
+            SELECT u.Name,
+                   COUNT(i.Id) AS TotalCount,
+                   RANK() OVER (ORDER BY COUNT(i.Id) DESC) AS UserRank
+            FROM Users u
+            JOIN IceCreams i ON CAST(u.Id AS TEXT) = i.UserId
+            GROUP BY u.Id, u.Name
+            """).ToList();
+    }
+
     private void BroadcastActivityToUser(string action, IceCream? item)
     {
         var user = activeUser.ActiveUser;
